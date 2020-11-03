@@ -1,0 +1,152 @@
+\mysubsection{Das V-Modell und andere Standards}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Das V-Modell}
+\begin{itemize}
+  \item Erweiterung des Wasserfallmodells 
+  \item Integriert die Qualitätssicherung in das Wasserfallmodell 
+  \item Verifikation und Validation der Teilprodukte sind wesentliche Bestandteile des V-Modells 
+  \item Nutzung bei der Bundeswehr und Behörden
+  \item Insbesondere für die Entwicklung militärischer Software gibt es standardisierte Wasserfallmodelle\\
+        z.B. DOD MIL-STD-2167, MOD 00-55
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Das V-Modell}
+\begin{center}
+\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/VModell}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\only<handout>{
+\begin{frame}[allowframebreaks]
+\frametitle{Das V-Modell}
+Das V-Modell stellt eine Erweiterung des Wasserfall-Modells dar und ergänzt dieses
+um die Qualitätssicherung. Boehm schaffte eine Grundlage für das V-Modell mit
+seiner Arbeiten über Verifikation und Validation, die wesentliche Bestandteile des V-Modells
+sind \citep{Boehm1984}. Unter Verifikation wird dabei die Überprüfung der Übereinstimmung
+von Softwareprodukt und Spezifikation verstanden, unter Validation die Feststellung
+der Eignung des Ergebnisses für seinen Einsatzzweck. Generelles Ziel des V-Modells
+ist die Festlegung aller zu konstruierender Ergebnisse, der dazu notwendigen
+Aktivitäten und der Verantwortlichkeiten aller an der Entwicklung Beteiligten. 
+Ursprünglich wurde das V-Modell zur Standardisierung der Softwareentwicklung im Bereich der Bundeswehr
+und der Bundesverwaltung entwickelt \citep{VModell1993}. Davon ausgehend hat es sich zu einem anerkannten
+und etablierten Entwicklungsstandard für IT-Systeme entwickelt. Die in der Praxis
+meistverbreitete Version ist das V-Modell 97, das gegenüber seiner ersten Entwicklung
+um eine Reihe von Ergänzungen und Verbesserungen wie z. B. Straffung
+der Prozessdokumentation und Einführung von modernen Entwicklungsszenarien
+erweitert worden ist. Das V-Modell 97 wurde kürzlich innerhalb eines Forschungsprojektes
+der TU München zum V-Modell XT weiterentwickelt \citep{VModellXT2007}. Im Rahmen
+dieses Projektes wurden neue Softwareentwicklungsthemen, -methoden und -faktoren sowie Erfahrungen mit dem bisherigen Modell ergänzt. Aufgrund der
+weitgehenden Verbreitung wird im Folgenden auf das V-Modell 97 eingegangen.
+Die in diesem Modell auch enthaltene Betrachtung der Hardware-Entwicklung wird
+nicht erläutert.
+
+Die gesamten Aktivitäten des V-Modells sind in die vier Submodelle Qualitätssicherung,
+Konfigurationsmanagement, Softwareerstellung und Projektmanagement untergliedert.
+Die folgende Abbildung zeigt das Zusammenwirken dieser Submodelle
+innerhalb des V-Modells.
+\end{frame}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Submodelle im V-Modell}
+\begin{center}
+\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/ProzessarchitekturV-Modell}
+\end{center}
+\end{frame}
+
+\only<handout>{
+\begin{frame}[allowframebreaks]
+\frametitle{Submodelle im V-Modell}
+Das übergeordnete Projektmanagement (PM) dient zur Planung, Steuerung und Informationsversorgung
+der anderen drei Submodelle sowie der Bereitstellung einer
+Softwareentwicklungsumgebung (SEU). Die eigentliche Produktentwicklung erfolgt
+innerhalb des Moduls Softwareentwicklung (SE), das im Zentrum des Gesamtmodells
+steht und durch die Qualitätssicherung (QS) mit Qualitätsanforderungen sowie das
+Konfigurationsmanagement (KM) mit Rechten und der Konfigurationsstruktur unterstützt
+wird. Das Modul der Softwareerstellung gliedert sich in eine Vielzahl detaillierter
+Tätigkeiten. Innerhalb der Softwarentwicklung wird zwischen durchzuführenden Aktivitäten und
+zu erstellenden Produkten unterschieden. Aktivitäten sind Tätigkeiten, die bezogen
+auf ihre Ergebnisse und Durchführungen genau beschrieben sind. Sie sind in obiger Abbildung als Kästen dargestellt. Das Ziel einer Aktivität kann die Erstellung, Zustands-
+oder Inhaltsänderung eines Produkts sein. Produkte sind die Ergebnisse bzw.
+Bearbeitungsgegenstände der Aktivitäten und als Ovale dargestellt. Sowohl Produkte
+als auch Aktivitäten lassen sich zur genaueren Darstellung weiter untergliedern. Im
+Softwareentwicklungsprozess wird die Konzeption aufbauend auf der Anforderungsanalyse
+vom generellen System-Entwurf bis zum Software-Feinentwurf immer detaillierter.
+Umgekehrt wird die Integration nach der Implementierung von der einzelnen
+Software-Integration bis zur Überleitung in die Nutzung immer umfangreicher.
+Aus den ersten groben Entwurfsphasen lassen sich Softwarepflegekonzepte sowie
+der Integrationsplan für die spätere Nutzung ableiten.
+
+Ein Rollenmodell innerhalb des V-Modells enthält die Beschreibung von notwendigen
+Erfahrungen, Kenntnissen und Fähigkeiten für die Aktivitäten, die einer Rolle
+zugeordnet sind. Das V-Modell erhebt den Anspruch auf Allgemeingültigkeit, d.h. dass
+es für verschiedene Softwareentwicklungsvorhaben geeignet ist. Dafür wurde die
+Möglichkeit geschaffen, das Modell auf die jeweiligen Erfordernisse anzupassen.
+Diese als Tailoring bezeichnete Maßnahme erlaubt die Festlegung von erforderlichen
+Aktivitäten und Produkten bzw. die Streichung von nicht benötigten. Das Tailoring
+wird sowohl vor Beginn der Entwicklung in grober Form als auch während der Entwicklung
+in verfeinerter Form durchgeführt.
+Um die Anpassungen des sehr umfassenden
+Modells korrekt durchführen zu können, bedarf es der intensiven Schulung
+der Mitarbeiter. Für kleine und mittlere Projekte fallen jedoch trotz der Anpassungsmöglichkeiten
+eine Vielzahl unnötiger Produkte und Softwarebürokratie an, die einen
+hohen Managementaufwand verursachen und ohne Werkzeugunterstützung
+kaum bewältigt werden können. Das V-Modell ist daher nur für große Entwicklungsvorhaben und integrierte Softwareumgebungen geeignet, die Allgemeingültigkeit ist auf diese Bereiche begrenzt \citep{VModell1993}.
+
+BMI-KBST (2005): V-Modell 200x. http://www.v-modell-200x.de/
+
+%\subsection{Cleanroom Engineering}
+%
+%Das Cleanroom Engineering gehört zu den sequentiellen Vorgehensmodellen. Es
+%durchläuft die klassischen Phasen der Softwareentwicklung von der Problemdefinition
+%bis zum Test. Das Besondere dieses Verfahrens liegt darin, dass die unterschiedlichen
+%Phasen von verschiedenen Teams bearbeitet werden. 
+%Um die Informationsübergabe zwischen den Teams zu realisieren, ist das erste Team
+%gezwungen, ihre Ergebnisse äußerst sorgfältig zu dokumentieren. Ein weiterer Effekt
+%ist, dass das vorhergehende Team bemüht sein wird, eine hohe Qualität der Ergebnisse
+%abzuliefern. Die Bezeichnung Cleanroom soll die Akribie, die bei dieser Art der
+%Entwicklung notwendig ist, hervorheben.
+%Das Cleanroom Referenz Modell unterteilt sich in 14 Prozesse, deren Inhalte hier
+%nicht weiter erläutert werden sollen. Für eine detaillierte Darstellung sei auf \citet{Cleanroom1999}
+% verwiesen.
+
+\end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Standards zum Qualitätsmanagement}
+\begin{itemize}
+  \item Der Qualitätsstandard ISO 9000 definiert insbesondere für die Dokumentation und für Überprüfungen \emph{grundlegende} Forderungen.
+    \begin{itemize}
+      \item Software-Unternehmen können nach ISO 9000 zertifiziert werden.
+      \item Erwartung: Audits durch Auftraggeber reduziert.
+    \end{itemize}
+  \item Zertifizierung nach ISO 9000 ähnlich Hygiene-Inspektion eines Restaurants: sagt nur aus, dass Ordnung herrscht, nicht ob das Essen schmeckt.
+    \begin{itemize}
+      \item Keine Aussage über Kundenzufriedenheit
+    \end{itemize}
+  \item ISO/IEC 25010 ­- Qualitätsmerkmale von Software
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Qualitäts-Charakteristiken und -Attribute}
+\framesubtitle{Nach ISO/IEC 25010}
+\begin{center}
+\pgfimage[width=\textwidth]{Einleitung/abbildungen/ISO25010}
+\end{center}
+\end{frame}

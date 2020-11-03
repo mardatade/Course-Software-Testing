@@ -1,0 +1,396 @@
+\mysubsection{Kontinuierliche Integration}\label{ssec:ci}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Neue Features: \glqq Naiver\grqq\ Workflow}
+ 
+Typisches \glqq unstrukturiertes\grqq\ Vorgehen:
+\begin{itemize}
+	\item Implementierung neuer Features
+   \item Aufruf und Test der Features aus Main-Methode, Ausgabe mit \textbf{System.out.println}
+   \item Manuelle Prüfung, ob Ergebnisse korrekt (oder zumindest plausibel) sind
+   \item Test-Code in Main-Methode wird später nicht mehr verwendet
+\end{itemize}
+ 
+ \pause
+ 
+Nachteile?
+ \begin{itemize}
+	 \item Code in Main-Methode, der nicht \glqq dahin gehört\grqq
+		\item Test-Code wird verworfen, obwohl auch später noch sinnvoll
+		\item Tests werden nicht mehr ausgeführt
+   \item[$\rightarrow$] Regressionen werden nicht erkannt
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Kontinuierliche Integration}
+Wozu?
+\begin{itemize}
+  \item Integrations-Probleme werden kontinuierlich entdeckt.
+  \item Frühe Warnungen bei nicht zusammenpassenden Komponenten.
+  \item Regressions-Tests entdecken Fehler.
+  \item Die Entwickler werden zu einem verantwortlichen Umgang "`erzogen"'.
+  \item Beispiel-Werkzeug:
+  \begin{itemize}
+	\item Jenkins \url{http://jenkins-ci.org/}
+  \end{itemize}
+\end{itemize}
+
+\vfill
+
+Siehe auch die Vorlesungen zu kontinuierlicher Integration für Kieker/ExplorViz und bei PPI.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Continuous Integration Environment}
+\framesubtitle{\tiny http://www.heise.de/developer/artikel/Continuous-Integration-in-Zeiten-agiler-Programmierung-1427092.html}
+  \begin{center}
+  \dgrafik{\textwidth}{0.3\textwidth}{Konfigurationsmanagement/abbildungen/ContinuousIntegrationEnvironment}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mysubsubsection{Automatisiertes Testen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Automatisches Testen}
+ 
+ Automatische Tests:
+  \begin{itemize}
+	 \item Test-Code in eigens dafür vorgesehenem Projektbereich
+		\item Ausführung wie \glqq Main-Methoden\grqq, aber Tool-Unterstützung für:
+		\begin{itemize}
+    \item Vergleich mit erwartetem Verhalten
+    \item automatische Durchführung aller Tests
+    \item Statistiken über bestandene, nicht bestandene Tests
+   \end{itemize}
+
+\end{itemize}
+
+ \pause
+ 
+Vorteile:
+\begin{itemize}
+	\item Trennung Funktionalität und Tests 
+   \item Tests bleiben erhalten
+   \item Tests können regelmäßig, automatisch ausgeführt werden\\
+      $\rightarrow$ Regressionen werden erkannt
+   \item Tests als \glqq Quality Gateway\grqq\ für Integration von neuem Code in den Master Branch bzw.\ Master Repository
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Automatisches Testen: JUnit}
+ 
+ \includegraphics[width=0.8cm]{Konfigurationsmanagement/abbildungen/junit.png}
+\begin{itemize}
+   \item Erstveröffentlichung 2000
+   \item eclipse-Unterstützung seit 2002
+   \item Einbinden bsp.~mit Maven
+\end{itemize}
+\pause
+ 
+\includegraphics[width=0.8cm]{Konfigurationsmanagement/abbildungen/junit.png} in Softwaretechnik:
+\begin{itemize}
+	\item Struktur und Beispiel in Vorlesung
+   \item Details in Übung
+   \item Eure Abgaben: JUnit-Tests gefordert (Quality-Gateway bei Korrektur)
+\end{itemize}
+%https://www.vogella.com/tutorials/JUnit/article.html
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[containsverbatim]{Eine Beispiel-Funktion}
+\framesubtitle{die getestet werden sollte \dots}
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+package com.example.project;
+
+public class Calculator {
+
+	public int add(int a, int b) {
+		return a - b;
+	}
+
+}
+\end{lstlisting}
+\begin{flushright}
+Schauen wir uns das einmal in eclipse an.
+\end{flushright}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[containsverbatim]{Eine Beispiel-Test}
+\footnotesize
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+package com.example.project;
+
+import static 
+         org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+class MyTest {
+
+	@Test
+	@DisplayName("1 + 1 = 2")
+	void addsTwoNumbers() {
+	   Calculator calculator = new Calculator();
+	   assertEquals(2, calculator.add(1, 1),
+		                "1 + 1 should equal 2");
+	}
+
+}
+\end{lstlisting}
+%import org.junit.jupiter.params.ParameterizedTest;
+%import org.junit.jupiter.params.provider.CsvSource;
+	%@ParameterizedTest(name = "{0} + {1} = {2}")
+	%@CsvSource({
+			%"0,    1,   1",
+			%"1,    2,   3",
+			%"49,  51, 100",
+			%"1,  100, 101"
+	%})
+	%void add(int first, int second, int expectedResult) {
+		%Calculator calculator = new Calculator();
+		%assertEquals(expectedResult, calculator.add(first, second),
+				%() -> first + " + " + second + " should equal " + expectedResult);
+	%}
+
+\begin{flushright}
+\tiny
+\url{https://github.com/junit-team/junit5-samples/}
+\end{flushright}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Automatisches Testen: Resümee}
+ 
+ Evaluation:
+ \begin{itemize}
+	 \item  Automatische Tests machen kaum zusätzliche Arbeit!
+		\item Helfen, Qualitätsprobleme früh zu erkennen
+\end{itemize}
+ 
+\pause
+ 
+Fragen:
+\begin{itemize}
+	\item Wie viele Tests sollte ich schreiben?
+   \item Welche Teile des Programms sollten getestet werden?
+   \item Und mit welchen Beispieldaten?
+   \item Woher weiß ich die \glqq erwarteten\grqq\ Ausgaben?
+   \item \dots
+\end{itemize}
+
+\pause
+ 
+Mehr dazu im Abschnitt \glqq Qualitätssicherung\grqq.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mysubsubsection{Mocking}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[allowframebreaks]
+ \frametitle{Mocking: Motivation}
+ 
+Unit Testing:
+\begin{itemize}
+   \item Code verwendet andere Objekte des Systems
+   \item Objekte müssen für Test verfügbar sein
+\end{itemize}
+Schwierigkeiten:
+ \begin{itemize}
+	   \item Unit-Testing! Kein komplettes System starten!
+		 \item Andere Objekte / Klassen eventuell noch nicht verfügbar!
+		 \item Performance
+    \item Echtes Objekt schwierig bereitzustellen:
+    \begin{itemize}
+     \item Spezifische Werte (Uhrzeit, Sensorwerte)
+     \item Fehlerzustände (Netzwerkfehler, \dots)
+    \end{itemize}
+\end{itemize}
+
+ \pause 
+Beispiele:
+\begin{itemize}
+	 \item Time-Server
+   \item Datenbank
+   \item Temperatur-Sensor
+   \item Netzwerkdienste
+\end{itemize}
+
+Mocking ist insbesondere für \glqq Test Driven Development\grqq\ relevant.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Ansatz: Mock-Objekte}
+ 
+Alternative: Mock-Objekte (auch: Test Double):
+\begin{itemize}
+	 \item Objekte, die echtes Verhalten nachahmen
+   \item Können im Test anstelle des echten Objekts verwendet werden
+\end{itemize}
+ 
+\pause
+
+Interface: 
+\begin{itemize}
+	 \item Müssen anstelle des \glqq echten Objekts\grqq\ verwendet werden können\\
+		$\rightarrow$ Gleiches Interface (oder Teilmenge) wie echtes Objekt
+\end{itemize}
+\pause
+ 
+Verhalten:
+\begin{itemize}
+	 \item \glqq Angelehnt\grqq\ an echtes Objekt\\
+		$\rightarrow$ für zu testenden Code: wie echtes Objekt
+		\item Explizites Herbeiführen von Werten, Zuständen, \dots\\
+   $\rightarrow$ für Test-Code:\\ konfigurierbar!
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Mock-Objekte: Spektrum}
+ 
+Einfachste Version: Stub-Objekte
+\begin{itemize}
+	\item Liefert immer feste Antworten auf Anfragen
+  \item Antworten können eventuell vom Test-Code gesetzt werden
+\end{itemize}
+
+ \dots
+ \pause
+ 
+Komplexeste Version: Fake-Objekte
+\begin{itemize}
+	\item Funktionierende Implementierung
+  \item Einfacher als tatsächlich verwendetes Objekt
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Mock-Objekte: Kategorien}
+  \framesubtitle{\url{https://martinfowler.com/articles/mocksArentStubs.html}}
+ 
+ \begin{description}[Dummy objects]
+  \item[Dummy objects] are passed around but never actually used. Usually they are just used to fill parameter lists. \pause
+  \item[Fake objects] actually have working implementations, but usually take some shortcut which makes them not suitable for production (an in-memory database is a good example). \pause
+  \item[Stubs] provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test. \pause
+  \item[Spies] are stubs that also record some information based on how they were called. \pause
+  \item[Mocks] are [\dots] objects pre-programmed with expectations which form a specification of the calls they are expected to receive.
+ \end{description}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Framework: Mockito}
+ 
+Übersicht:
+\begin{itemize}
+	\item \url{https://site.mockito.org/}
+   \item Java-Framework zum Erstellen von Mock-Objekten
+   \item Erste Version: 2008
+\end{itemize}
+
+If you use Mockito in tests you typically:
+\begin{enumerate}
+	\item Mock away external dependencies and insert the mocks into the code under test
+	\item Execute the code under test
+	\item Verify that the code executed correctly
+\end{enumerate}
+For example, you can verify that a method has been called with certain parameters. This kind of testing is sometimes called behavior testing. Behavior testing does not check the result of a method call, but it checks that a method is called with the right parameters.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[containsverbatim,allowframebreaks]
+ \frametitle{Mockito mit JUnit}
+\footnotesize
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+import static org.mockito.Mockito.*;
+
+public class MockitoTest  {
+
+  @Mock
+  MyDatabase databaseMock;                         // 1
+
+  @Rule public MockitoRule mockitoRule
+		            = MockitoJUnit.rule(); // 2
+
+  @Test
+  public void testQuery()  {
+    ClassToTest t = new ClassToTest(databaseMock); // 3
+    boolean check = t.query("* from t");           // 4
+    assertTrue(check);                             // 5
+    verify(databaseMock).query("* from t");        // 6
+  }
+}
+\end{lstlisting}
+\newpage
+\normalsize
+\begin{enumerate}
+	\item Tells Mockito to mock the databaseMock instance
+	\item Tells Mockito to create the mocks based on the \texttt{@Mock} annotation
+	\item Instantiates the class under test using the created mock
+	\item Executes some code of the class under test
+	\item Asserts that the method call returned true
+	\item Verify that the query method was called on the \texttt{MyDatabase} mock
+\end{enumerate}
+
+Siehe auch \url{https://www.vogella.com/tutorials/Mockito/article.html}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Mocking: Resümee}
+ 
+Motivation: Komplexe Objekte für Test \glqq ersetzen\grqq:
+\begin{itemize}
+  	\item Simulieren
+    \item Durch Dummies ersetzen
+    \item Zusätzlich Aufruf-Informationen sammeln
+\end{itemize}
+Verhältnis zu Unit-Testing:
+\begin{itemize}
+	 \item Ergänzt assertions durch Verification: Testen von Interaktionen mit dem Mock-Objekt
+\end{itemize}
+Verifikation:
+\begin{itemize}
+	\item Mock-Objekte speichern Aufrufinformationen. Dies erlaubt eine Überprüfung von Eigenschaften der \textit{Aufruf-History} der Mock-Objekte
+  \item \textbf{Achtung}: Nicht verwechseln mit formaler Verifikation!
+\end{itemize}
+Unit Tests \textit{vs.} Mock-Verification?
+\begin{itemize}
+	\item Ergänzung, nicht Ersatz: Überprüfen unterschiedliche Aspekte!
+  \item \textbf{Mehr Details und Beispiele: Übung!}
+\end{itemize}
+\end{frame}

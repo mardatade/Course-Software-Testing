@@ -1,0 +1,263 @@
+
+\begin{frame}
+ \frametitle{Qualitätssicherung: Überblick}
+
+Qualitätssicherung für Software:
+\begin{itemize}
+	\item Gesehen: Softwarefehler treten in der Praxis auf.
+  \item Ziel: Fehler \textbf{spätestens} in ausgelieferter Software verhindern
+\end{itemize}
+Möglichkeiten?
+ \pause
+\begin{itemize}
+	\item Code Review
+   \begin{itemize}
+    \item 4-Augen-Prinzip
+    \item Review im Team, ggf. via Paar-Programmierung
+   \end{itemize} \pause
+   \item Tests
+   \begin{itemize}
+    \item Manuell
+		\item Automatisch
+   \end{itemize} \pause
+   \item Formale Methoden
+   \begin{itemize}
+    \item Formale Verifikation
+    \item Korrektheitsbeweis 
+   \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Was wir nicht möchten: Bugs}
+\framesubtitle{\citep{Binder1999}}
+
+\only<beamer>{  \begin{center}
+  \includegraphics[width=.85\textwidth]{Qualitaetssicherung/abbildungen/Bug}
+  \end{center}
+}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mysubsection{Validation \& Verifikation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Validation und Verifikation von Software}
+\begin{itemize}
+  \item Validation und Verifikation des implementierten Softwaresystems \citep{Boehm1984,FisherVV2007}:
+    \begin{itemize}
+      \item "`Bauen wir das System richtig?"' (Verifikation)\\
+            Überprüfen, ob das System die Anforderungen realisiert
+      \item "`Bauen wir das richtige System?"' (Validation)\\
+            Überprüfen, ob die \emph{tatsächlichen} Anforderungen realisiert wurden
+    \end{itemize}
+  \item Validation kann z.B. durch Prototyping unterstützt werden (siehe LE \ref{sec:Vorgehensmodelle})
+  \item Gelegentlich werden diese Begriffe auch anders verwendet: 
+    \begin{itemize}
+      \item z.B. Verifikation für formale Beweise und Validation für \emph{laufen lassen}.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}\frametitle{Validation und Verifikation: Rollen}
+\begin{center}
+\includegraphics[width=\textwidth]{Qualitaetssicherung/abbildungen/ValidationVerifikation}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Verifikationsziele}
+\begin{itemize}
+  \item Nachweis der korrekten Funktionsweise aller Funktionen eines Systems bezogen auf eine vorgegebene Spezifikation
+    \begin{itemize}
+      \item Auffinden von Fehlern 
+      \item Ausschluss von Fehlern 
+    \end{itemize}
+  \item Auch der Verifikationsprozess selbst muss verifiziert werden: 
+    \begin{itemize}
+      \item Waren die Testbedingungen korrekt? 
+      \item Ist ein formaler Beweis korrekt? 
+    \end{itemize}
+  \item Auch technische (nicht-funktionale) Anforderungen müssen überprüft werden: 
+    \begin{itemize}
+      \item Effizienz, Portabilität, Änderbarkeit, etc. 
+    \end{itemize}
+  \item Das Ergebnis ist nicht immer einfach \emph{korrekt} bzw. \emph{fehlerhaft} .
+    \begin{itemize}
+      \item Zuverlässigkeitsanforderungen und Subjektivität erfordern feingranularere Metriken,\\
+      z.B. \emph{gut genug} oder 99\% Verfügbarkeit.
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Klassen von Verifikationsverfahren}
+
+\begin{block}{Experimentelles Testen}
+Mit dem Verhalten des Systems wird experimentiert, um zu sehen, ob es sich wie erwartet verhält (Testen).
+\begin{itemize}
+  \item Strukturorientierte Verfahren\\
+        white-box, mit Kenntnis der Implementierung 
+  \item Funktionsorientierte Verfahren\\
+        black-box, ohne Kenntnis der Implementierung
+\end{itemize}
+\end{block}
+ 
+\vspace{1ex}
+\begin{block}{Statische Analyse}
+
+Das Verhalten eines Systems wird analysiert, um abzuleiten, ob das Verhalten korrekt ist.
+\begin{itemize}
+  \item Statische Korrektheitsbeweise 
+  \item Reviews, Inspektionen, Walkthroughs, etc.
+\end{itemize}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mysubsection{Testen}
+
+\begin{frame}
+\frametitle{Testen zur Verifikation}
+\begin{description}[Integrationstest]
+  \item[Unit-Test]
+  Einzelne Funktionen / Komponenten werden getestet.
+  \item[Integrationstest]
+  Abhängige Komponenten werden gemeinsam getestet.\\
+            Betonung auf Schnittstellentest.\\
+        Komponenten werden zu Subsystemen integriert und gemeinsam getestet.
+  \item[Systemtest]
+  Test des Gesamtsystems
+\end{description}  
+\begin{block}{Ziel einer Testplanung}
+Testfälle so auswählen, dass die Wahrscheinlichkeit groß ist, Fehler zu finden oder diese auszuschließen.
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Das V-Modell}
+\framesubtitle{Nutzung insbesondere bei der Bundeswehr und Behörden}
+\begin{center}
+\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/VModell}
+\end{center}
+Verifikation und Validation der Teilprodukte sind wesentliche Bestandteile des V-Modells.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Probleme beim Testen von Software}
+\begin{itemize}
+  \item Testfälle beschreiben das Verhalten meist genauer als die Spezifikation: 
+    \begin{itemize}
+      \item[$\rightarrow$] Testfälle vor Implementierung entwickeln
+    \end{itemize}
+  \item Grundsätzliches Problem: \\
+        ``Program testing can be used to show the presence of bugs, but never to show their absence.'' \citep{Dijkstra72}
+  \item Zu beantwortende Fragen:
+   \begin{itemize}
+  	\item Wie geeignete Testfälle und Testpläne bestimmen? 
+    \item Wie Korrektheit der Testdurchführung überprüfen? 
+    \item Wer testet? 
+   \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\frametitle{Der Testprozess}
+%\framesubtitle{\citep{Sommerville2018}}
+  %\begin{center}
+  %\includegraphics[width=1.05\textwidth]{Qualitaetssicherung/abbildungen/Testprozess}
+  %\end{center}
+%Dies stellt einen möglichen Testprozess dar, der sich am V-Modell orientiert.
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Herausforderungen der Schritte im Testprozess}
+    \begin{itemize}
+    \item Identifikation von Testszenarien 
+         \begin{itemize}\item Was ist zu Testen? 
+         \end{itemize} 
+    \item Festlegung konkreter Testszenarien
+          \begin{itemize}
+           \item Wie wird der Testling ausgeführt?
+           \item Welches Verhalten ist korrekt?
+          \end{itemize} 
+    \item Formalisierung von Tests 
+         \begin{itemize}\item Wie wird der Test spezifiziert? 
+         \end{itemize} 
+    \item Ausführung von Tests 
+         \begin{itemize}\item Automatisierung!
+         \end{itemize} 
+    \item Pflege und Wartung von Tests
+         \begin{itemize}\item Synchronisiert mit den Änderungen der fachlichen Software müssen (zumeist) die Tests angepasst und geändert werden.
+         \end{itemize} 
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Zielvorgaben beim Testen von Software}
+\begin{itemize}
+  \item Es muss klar sein, welche Resultate beim Testen erwartet werden.
+  \item Einsatz \emph{systematischer} Techniken:
+    \begin{itemize}
+      \item Auswahl der Testfälle möglichst nicht (nur) intuitiv oder zufällig.
+    \end{itemize}
+  \item Die Ergebnisse sollten reproduzierbar sein. 
+    \begin{itemize}
+      \item Das ist insbesondere beim Testen paralleler Programme ein großes Problem.
+    \end{itemize}
+  \item Fehler sollten nicht nur erkannt, sondern auch lokalisiert und behoben werden. %\citep{Rohr2007}.
+    \begin{itemize}
+      \item \glq Known bugs\grq\ zeugen nicht von hoher Qualität.
+    \end{itemize}       
+  \item Qualitäts-Anforderungen müssen mit möglichst hoher Genauigkeit geprüft werden.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Pragmatische Sicht auf das Testen}
+\begin{itemize}
+    \item Testen erlaubt Aussagen über die Qualität eines Softwaresystems 
+    \item Quantitative Metriken stützen Aussagen 
+         \begin{itemize}\item Testabdeckung etc. 
+         \end{itemize} 
+    \item Automatisierte Regressionstests bieten eine Absicherung gegen Seiteneffekte bei Änderungen 
+		\begin{itemize}
+			\item Unter einem Regressionstest versteht man die Wiederholung von Testfällen, um sicherzustellen, dass Modifikationen in bereits getesteten Teilen der Software keine neuen Fehler (``Regressionen'') verursachen. 
+		\end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Black Box vs. White Box Testen}
+  \begin{center}
+  \includegraphics[width=.8\textwidth]{Qualitaetssicherung/abbildungen/BlackBoxAndWhiteBoxTesting}
+  \end{center}
+\end{frame}
+

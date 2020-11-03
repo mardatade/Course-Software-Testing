@@ -1,0 +1,54 @@
+\mysubsubsection{Integrationstest}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Integrationstest}
+\framesubtitle{Testing in the large}
+\begin{itemize}
+  \item Der Test einzelner Module garantiert nicht, dass die Zusammenarbeit korrekt funktioniert.
+  \item Viele Module können gar nicht isoliert getestet werden.
+  \item Also: Vorgehensweise zum Test komplexer Systeme (modulares Testen):
+    \begin{itemize}
+      \item Modultests (a.k.a.\ Unit Tests \&\ Components Tests)\\
+			Testen eine Komponente ohne Kontext.
+      \item Inkrementeller Integrationstest mehrer Komponenten im Kontext.
+      \item Systemtest: Test des gesamten Systems in der Anwendungsumgebung (end-to-end).
+    \end{itemize}
+	\item Akzeptanztests (a.k.a.\ Funktionstests)\\
+Focus auf das Testen von `cross-cutting' Funktionalität.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Integrationstest (Forts.)}
+\begin{itemize}
+  \item Bei eingebetteten Realzeitsystemen muss auch das Zusammenspiel von Hard- und Software getestet werden.
+	\begin{itemize}
+		\item Digital Twins
+	\end{itemize}
+  \item Inkrementelles Testen ist dem \glq Big-Bang\grq-Testen, wobei nach den Modultests direkt das Gesamtsystem getestet wird, vorzuziehen.
+  \item Die Trennung zwischen Schnittstelle und Implementierung erleichtert den Integrationstest erheblich.
+    \begin{itemize}
+      \item Leichtes Ersetzen von \glq Mockups\grq\ durch \glq richtige\grq\ Module.\\
+			Siehe z.B.\ Mockito \url{https://github.com/mockito/}
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Inkrementelles Testen}
+\begin{center}
+\pgfimage[width=0.9\textwidth]{Qualitaetssicherung/abbildungen/Inkrementelles_Testen}\\
+"`Testgerüst"'
+\end{center}
+ 
+\begin{itemize}
+	\item Inkrementelle Tests können entsprechend den Benutzt- und Kompositions-Hierarchien bottom-up oder top-down erfolgen; natürlich auch jo-jo. 
+	\item Eine hierarchische Architektur ist dabei sehr förderlich.
+\end{itemize}
+\end{frame}
