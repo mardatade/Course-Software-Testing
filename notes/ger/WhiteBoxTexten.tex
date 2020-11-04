@@ -1,0 +1,286 @@
+\mysubsubsection{White-Box Testen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{White-box Testen von Modulen}
+\framesubtitle{(testing in the small)}
+\begin{description}[Anwei]
+  \item[C0: Anweisungsüberdeckung:] Jede Anweisung soll durch eine geeignete Testmenge mindestens einmal durchlaufen werden (Anweisungsüberdeckungskriterium).
+  \item[C1: Kantenüberdeckung:] Jede Kante eines Kontrollflussgraphen soll mindestens einmal durchlaufen werden (Kantenüberdeckungskriterium).
+  \item[C2: Pfadüberdeckung:] Jeder Pfad vom Start- zum Endknoten soll durch eine geeignete Testmenge mindestens einmal durchlaufen werden (Pfadüberdeckungskriterium).
+  \item[C3: Bedingungsüberdeckung:] Jede mögliche Kombination der Teilbedingungen muss mindestens einmal durchlaufen werden (Bedingungsüberdeckungskriterium).
+\end{description}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Probleme mit der Anweisungsüberdeckung}
+\framesubtitle{C0: Anweisungsüberdeckung}
+\begin{itemize}
+  \item Ist ein Programm ausreichend getestet, wenn jede Anweisung mindestens einmal ausgeführt wurde?
+  \item Wie bestimmt man eine minimale Testmenge? 
+  \item Ist es sinnvoll, auch leere Anweisungen (z.B. fehlendes \texttt{else}) zu überdecken? 
+  \item Die Struktur des Programms bleibt unberücksichtigt 
+  \item Grundsätzlich:\\
+        Überdeckung ist nicht entscheidbar!
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Überdeckung aller Kanten eines Kontrollflussgraphen}
+\framesubtitle{C1: Kantenüberdeckung}
+Voraussetzung ist die Konstruktion eines Kontrollflussgraphen für ein (imperatives) Programm:
+\begin{itemize}
+  \item Jede einfache Anweisung, die keine weiteren Anweisungen enthält, wird als Knoten dargestellt.
+  \item Bedingte Anweisungen werden als Verzweigungen dargestellt.
+  \item Schleifen werden als Zyklen und
+  \item Sequenzen durch Kanten zwischen Knoten dargestellt.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Konstruktion von Kontrollflussgraphen}
+\begin{center}
+\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/Kontrollflussgraphen}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Beispiel: Programm zur Fakultätsberechnung}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\lstset{language=Java,basicstyle=\small}
+\begin{lstlisting}
+public long fakultaet
+            (int n) {
+  if (n < 0) {
+    throw new 
+      Exception();
+  }
+  long fak = 1;
+
+  while (n > 0) {
+    fak *= n;
+    n--;
+   }
+  return fak;
+}
+\end{lstlisting}
+\end{column}
+\pause
+\begin{column}{0.6\textwidth}
+\begin{center}
+\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/Fakultaetsberechnung}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Testfälle zur Kantenüberdeckung}
+\begin{tabular}{llp{0.2\textwidth}p{0.18\textwidth}p{0.28\textwidth}}
+\textbf{Nr} & \textbf{Klasse} & \textbf{Beschreibung des Testfalls} & \textbf{Erwartetes Ergebnis}  & \textbf{Beispielhafte Eingabedaten} \\
+~\\
+1           & Normal          & Eingabeparame\-ter ist gültig	& Fakultät des Eingabeparameters	& 42 \\
+            & \multicolumn{4}{l}{Überprüfte Kanten: 2, 3, 4, 5, 6, 7} \\[2em]
+2           & Fehler          & Eingabeparame\-ter ist nicht gültig   & Exception & -1 \\
+            & \multicolumn{4}{l}{Überprüfte Kanten: 1}
+\end{tabular}
+\end{frame}
+
+%%%%%%%
+
+\begin{frame}
+\frametitle{Zyklomatische Komplexität}
+\framesubtitle{\citet{McCabe1976,EbertCain2016}}
+\begin{itemize}
+  \item Hinter dieser Software-Metrik von McCabe steckt der Gedanke, dass ab einer bestimmten Komplexität ein Modul für Menschen nicht mehr begreifbar ist. 
+  \item Die zyklomatische Komplexität ist definiert als die Anzahl unabhängiger Pfade auf dem Kontrollflussgraphen eines Moduls.
+  \item Die zyklomatische Komplexität gibt an, wie viele Testfälle nötig sind, um eine Kantenüberdeckung zu erreichen.
+	\item Das Komplexitätsmaß nach McCabe ist gleich der Anzahl der binären Verzweigungen plus 1.
+	\item Laut McCabe sollte die zyklomatische Zahl eines in sich abgeschlossenen Teilprogramms nicht höher als 10 sein, da sonst das Programm zu komplex und zu schwer zu testen ist.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Zyklomatische Komplexität: Beispiel}
+\framesubtitle{\citet{McCabe1976,EbertCain2016}}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{center}
+\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/CylomaticComplexity}
+\end{center}
+\end{column}
+\begin{column}{0.5\textwidth}
+\pause
+Path 1:  1,2,3,6,7,8\\
+\pause
+Path 2:  1,2,3,5,7,8\\
+\pause
+Path 3:  1,2,4,7,8\\
+\pause
+Path 4:  1,2,4,7,2,4,...7,8\\
+\bigskip\bigskip
+Zyklomatische Komplexität = 4
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{frame}[fragile]
+%\frametitle{Beispiel: Programm zur Sitzplatzreservierung}
+%\small
+%\begin{verbatim}
+%PROCEDURE Sitzplan; 
+%BEGIN 
+    %If sitzplanliste.aktualisiert = neu  then 
+    %BEGIN 
+        %While (sitzplanliste <> nil)  do 
+        %BEGIN   
+            %Case sitzplanliste.sitz.status of 
+              %CFrei: platz_ausgeben (frei); 
+              %CBelegt: platz_ausgeben (belegt); 
+              %CReserviert: platz_ausgeben (reserviert); 
+            %END; 
+            %sitzplatzliste := sitzplatzliste.next; 
+        %END;
+        %sitzplanliste.aktualisiert := Caktualisiert; 
+    %END 
+    %Else 
+        %fehlervar := nicht_neu,
+%END;
+%\end{verbatim}
+%\end{frame}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\begin{frame}
+%\frametitle{Kontrollflussdiagramm für Sitzplatzreservierung}
+%\begin{center}
+%\dgrafik{.8\textheight}{.7\textwidth}{Qualitaetssicherung/abbildungen/Sitzplatzreservierung}
+%\end{center}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\frametitle{Testfälle zur Kantenüberdeckung}
+%\begin{tabular}{llp{0.2\textwidth}p{0.18\textwidth}p{0.28\textwidth}}
+%\textbf{Nr} & \textbf{Klasse} & \textbf{Beschreibung des Testfalls} & \textbf{Erwartetes Ergebnis}  & \textbf{Beispielhafte Eingabedaten} \\
+%1           & Normal          & Sitzplan ist neu                    & Ausgabe des Sitzplanes        & Neuer Sitzplan mit einem freien, einem belegten und einem reservierten Sitz muss als Parameter übergeben werden. \\
+            %& \multicolumn{4}{l}{Überprüfte Kanten: 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13} \\[2em]
+%2           & Fehler          & Sitzplan ist alt                    & Setzen der Fehlervariablen    & Sitzplan wurde seit der letzten Verwendung nicht verändert \\
+            %& \multicolumn{4}{l}{Überprüfte Kanten: 2, 3}
+%\end{tabular}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Anmerkungen zum Kantenüberdeckungskriterium}
+\begin{itemize}
+  \item Es wird erzwungen, dass jede Bedingung jeweils mit true und false durchlaufen wird.
+  \item Das Kantenüberdeckungskriterium ist somit \emph{schärfer} als das Anweisungsüberdeckungskriterium.
+  \item Gelegentlich jedoch nicht scharf genug:
+    \begin{itemize}
+      \item Zusammengesetzte Bedingungen werden nicht hinreichend berücksichtigt.
+    \end{itemize}
+  \item Unzureichend für den Test von Schleifen
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Pfadüberdeckung}
+\framesubtitle{C2: Pfadüberdeckung}
+ Auch bei einfachen Bedingungen kann die Kantenüberdeckung noch unzureichend sein:
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\lstset{language=Java,basicstyle=\small}
+\begin{lstlisting}
+if (x != 0) {
+   y = 5;
+}
+else {
+   y = 6;
+}
+if (z > 1) {
+   z = z / x;
+}
+else {
+   z = 0;
+}
+\end{lstlisting}
+\end{column}
+\pause
+\begin{column}{0.7\textwidth}
+\begin{itemize}
+  \item Die Testmenge \{(x=0, z=1), (x=1, z=3)\} erfüllt zwar das Kantenüberdeckungskriterien, erkennt aber nicht die Division durch 0.
+  \item Abhängigkeiten bleiben unerkannt!
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Pfadüberdeckung (Fortsetzung)}
+\begin{itemize}
+  \item Die Testmenge\\
+   \{(x=0, z=1), (x=1, z=3), (x=0, z=3), (x=1, z=1)\}\\
+   erfüllt das Pfadüberdeckungskriterium.
+  \item Problem: Die Anzahl der Pfade wächst exponentiell mit der Länge des Programmcodes, so dass ein Testen mit dem Pfadüberdeckungskriterium unrealistisch ist.
+  \item Weiteres Problem: Anzahl Pfade für Schleifen.\\
+  Lösungsansatz: Heuristiken.\\
+   Beispielheuristik für die Anzahl von Schleifendurchläufen:
+    \begin{itemize}
+      \item 0 mal
+      \item \emph{mittelmäßig} oft 
+      \item maximale Anzahl 
+    \end{itemize}
+  Grenzwerte sind wichtig!
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Bedingungsüberdeckung}
+\framesubtitle{C3}
+Hierbei wird z.B.\\
+%\begin{lstlisting}
+\begin{quote}
+\texttt\sffamily{if (C1 and C2) ST;\\
+~~else SF;}
+\end{quote}
+in die folgende Anweisung transformiert:\\
+\begin{quote}
+\texttt\sffamily{if (C1)\\
+~~if (C2) ST\\
+~~else SF\\
+else SF}
+\end{quote}
+
+\vspace{\baselineskip}
+\begin{itemize}
+  \item Der neue Kontrollflussgraph überdeckt alle elementaren (Teil-)Bedingungen und macht damit \emph{versteckte} Kanten sichtbar.
+  \item Das Bedingungsüberdeckungskriterium ergibt somit ggf.\ noch schärfere Testmengen.
+\end{itemize}
+\end{frame}
