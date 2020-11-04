@@ -1,29 +1,29 @@
 
 \begin{frame}
- \frametitle{Qualitätssicherung: Überblick}
+ \frametitle{Quality control: Overview}
 
-Qualitätssicherung für Software:
+Quality control for software:
 \begin{itemize}
-	\item Gesehen: Softwarefehler treten in der Praxis auf.
-  \item Ziel: Fehler \textbf{spätestens} in ausgelieferter Software verhindern
+	\item Known: Software errors occur in practice.
+  \item Goal: Prevent errors \textbf{at least} in live software.
 \end{itemize}
-Möglichkeiten?
+Options?
  \pause
 \begin{itemize}
 	\item Code Review
    \begin{itemize}
-    \item 4-Augen-Prinzip
-    \item Review im Team, ggf. via Paar-Programmierung
+    \item four-eyes principle
+    \item Team Review, if applicable via pair programming
    \end{itemize} \pause
    \item Tests
    \begin{itemize}
-    \item Manuell
-		\item Automatisch
+    \item Manually
+    \item Automatically
    \end{itemize} \pause
-   \item Formale Methoden
+   \item Formal methods
    \begin{itemize}
-    \item Formale Verifikation
-    \item Korrektheitsbeweis 
+    \item Formal verification
+    \item Proofs of Program Correctness 
    \end{itemize}
 \end{itemize}
 \end{frame}
@@ -31,70 +31,70 @@ Möglichkeiten?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Was wir nicht möchten: Bugs}
+\frametitle{Things we do not want: Bugs}
 \framesubtitle{\citep{Binder1999}}
 
 \only<beamer>{  \begin{center}
-  \includegraphics[width=.85\textwidth]{Qualitaetssicherung/abbildungen/Bug}
+  \includegraphics[width=.85\textwidth]{QualityControl/illustrations/Bug}
   \end{center}
 }
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mysubsection{Validation \& Verifikation}
+\mysubsection{Validation \& Verification}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Validation und Verifikation von Software}
+\frametitle{Validation and verification of software}
 \begin{itemize}
-  \item Validation und Verifikation des implementierten Softwaresystems \citep{Boehm1984,FisherVV2007}:
+  \item Validation and verification of the implemented software system \citep{Boehm1984,FisherVV2007}:
     \begin{itemize}
-      \item "`Bauen wir das System richtig?"' (Verifikation)\\
-            Überprüfen, ob das System die Anforderungen realisiert
-      \item "`Bauen wir das richtige System?"' (Validation)\\
-            Überprüfen, ob die \emph{tatsächlichen} Anforderungen realisiert wurden
+      \item "`Do we build the system right?"' (Verification)\\
+            Check  that the system meets the requirements
+      \item "`Do we build the right system?"' (Validation)\\
+            Check whether the \emph{actual} (user) requirements have been realized.
     \end{itemize}
-  \item Validation kann z.B. durch Prototyping unterstützt werden (siehe LE \ref{sec:Vorgehensmodelle})
-  \item Gelegentlich werden diese Begriffe auch anders verwendet: 
+  \item Validation can be supported e.g. by prototyping (see LE \ref{sec:Process_Models})
+  \item Occasionally these terms are also used differently:
     \begin{itemize}
-      \item z.B. Verifikation für formale Beweise und Validation für \emph{laufen lassen}.
+      \item e.g. verification for formal proofs and validation for \emph{running}.
     \end{itemize}
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}\frametitle{Validation und Verifikation: Rollen}
+\begin{frame}\frametitle{Validation and Verification: Roles}
 \begin{center}
-\includegraphics[width=\textwidth]{Qualitaetssicherung/abbildungen/ValidationVerifikation}
+\includegraphics[width=\textwidth]{QualityControl/illustrations/ValidationVerification}
 \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Verifikationsziele}
+\frametitle{Verification Objectives}
 \begin{itemize}
-  \item Nachweis der korrekten Funktionsweise aller Funktionen eines Systems bezogen auf eine vorgegebene Spezifikation
+  \item Proof of the correct functioning of all functions of a system in relation to a given specification
     \begin{itemize}
-      \item Auffinden von Fehlern 
-      \item Ausschluss von Fehlern 
+      \item Identify errors
+      \item Absence of errors
     \end{itemize}
-  \item Auch der Verifikationsprozess selbst muss verifiziert werden: 
+  \item The verification process itself must also be verified: 
     \begin{itemize}
-      \item Waren die Testbedingungen korrekt? 
-      \item Ist ein formaler Beweis korrekt? 
+      \item Are the test conditions correct?
+      \item Is a formal proof correct? 
     \end{itemize}
-  \item Auch technische (nicht-funktionale) Anforderungen müssen überprüft werden: 
+  \item Technical (non-functional) requirements must also be checked:
     \begin{itemize}
-      \item Effizienz, Portabilität, Änderbarkeit, etc. 
+      \item Efficiency, portability, modifiability, etc.
     \end{itemize}
-  \item Das Ergebnis ist nicht immer einfach \emph{korrekt} bzw. \emph{fehlerhaft} .
+  \item The result is not always simply \emph{correct} or \emph{incorrect}.
     \begin{itemize}
-      \item Zuverlässigkeitsanforderungen und Subjektivität erfordern feingranularere Metriken,\\
-      z.B. \emph{gut genug} oder 99\% Verfügbarkeit.
+      \item Reliability requirements and subjectivity require more fine-grained metrics,\\
+      e.g. \emph{good enough} or 99\% availability.
     \end{itemize}
 \end{itemize}
 \end{frame}
@@ -104,76 +104,80 @@ Möglichkeiten?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Klassen von Verifikationsverfahren}
+\frametitle{Classification of verification techniques}
 
-\begin{block}{Experimentelles Testen}
-Mit dem Verhalten des Systems wird experimentiert, um zu sehen, ob es sich wie erwartet verhält (Testen).
+\begin{block}{Symbolic Execution}
+The behavior of the system is tested with respect to the expected behavior.
 \begin{itemize}
-  \item Strukturorientierte Verfahren\\
-        white-box, mit Kenntnis der Implementierung 
-  \item Funktionsorientierte Verfahren\\
-        black-box, ohne Kenntnis der Implementierung
+  \item Structure-oriented methods\\
+        white-box, with knowledge of the implementation 
+  \item Function-oriented methods\\
+        black-box, without knowledge of the implementation
 \end{itemize}
 \end{block}
+%Verification https://www.researchgate.net/figure/Classification-of-verification-techniques_fig3_36374045
+%veritesting https://dl.acm.org/doi/abs/10.1145/2568225.2568293
+%white-box fuzz testing http://pxzhang.cn/paper/concolic_testing/FuzzTesting.pdf
+%concolic testing https://dl.acm.org/doi/abs/10.1145/1065010.1065036
  
 \vspace{1ex}
-\begin{block}{Statische Analyse}
-
-Das Verhalten eines Systems wird analysiert, um abzuleiten, ob das Verhalten korrekt ist.
+\begin{block}{Static Analysis}
+The behavior of a system is analyzed to derive whether the behavior is correct.
 \begin{itemize}
-  \item Statische Korrektheitsbeweise 
-  \item Reviews, Inspektionen, Walkthroughs, etc.
+  \item Static proofs of correctness
+  \item Reviews, inspections, walkthroughs, etc.
 \end{itemize}
 \end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mysubsection{Testen}
+\mysubsection{Testing}
 
 \begin{frame}
-\frametitle{Testen zur Verifikation}
-\begin{description}[Integrationstest]
+\frametitle{Testing for verification}
+\begin{description}[Integration test]
   \item[Unit-Test]
-  Einzelne Funktionen / Komponenten werden getestet.
-  \item[Integrationstest]
-  Abhängige Komponenten werden gemeinsam getestet.\\
-            Betonung auf Schnittstellentest.\\
-        Komponenten werden zu Subsystemen integriert und gemeinsam getestet.
-  \item[Systemtest]
-  Test des Gesamtsystems
+  Single functions / components are tested.
+  \item[Integration test]
+  Interdependent components are tested together.\\
+            Focus on interface testing.\\
+        Components are integrated into subsystems and tested together.
+  \item[System test]
+  Test of the complete system.
 \end{description}  
-\begin{block}{Ziel einer Testplanung}
-Testfälle so auswählen, dass die Wahrscheinlichkeit groß ist, Fehler zu finden oder diese auszuschließen.
+\begin{block}{Objective of a test planning}
+Select test cases in such a way that the probability of finding errors or ruling them out is high.
 \end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Das V-Modell}
-\framesubtitle{Nutzung insbesondere bei der Bundeswehr und Behörden}
+\frametitle{The V-Model}
+\framesubtitle{Use especially by military and governmental authorities.}
 \begin{center}
-\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/VModell}
+\pgfimage[width=\textwidth]{QualityControl/illustrations/VModel}
 \end{center}
-Verifikation und Validation der Teilprodukte sind wesentliche Bestandteile des V-Modells.
+Verification and validation of the sub-products are essential components of the V-Model.
 \end{frame}
+%https://www.researchgate.net/figure/V-model-for-software-development_fig2_36374045
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Probleme beim Testen von Software}
+\frametitle{Problems in software testing}
 \begin{itemize}
-  \item Testfälle beschreiben das Verhalten meist genauer als die Spezifikation: 
+  \item Test cases often describe the behavior more detailed than the specification: 
     \begin{itemize}
-      \item[$\rightarrow$] Testfälle vor Implementierung entwickeln
+      \item[$\rightarrow$] Develop test cases before implementation
     \end{itemize}
-  \item Grundsätzliches Problem: \\
+  \item Basic problem: \\
         ``Program testing can be used to show the presence of bugs, but never to show their absence.'' \citep{Dijkstra72}
-  \item Zu beantwortende Fragen:
+  \item Questions to answer:
    \begin{itemize}
-  	\item Wie geeignete Testfälle und Testpläne bestimmen? 
-    \item Wie Korrektheit der Testdurchführung überprüfen? 
-    \item Wer testet? 
+  	\item How to determine suitable test cases and test plans? 
+    \item How to check the correctness of the test implementation? 
+    \item Who is the tests authority? 
    \end{itemize}
 \end{itemize}
 \end{frame}
@@ -181,35 +185,35 @@ Verifikation und Validation der Teilprodukte sind wesentliche Bestandteile des V
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\begin{frame}
-%\frametitle{Der Testprozess}
+%\frametitle{The test process}
 %\framesubtitle{\citep{Sommerville2018}}
   %\begin{center}
-  %\includegraphics[width=1.05\textwidth]{Qualitaetssicherung/abbildungen/Testprozess}
+  %\includegraphics[width=1.05\textwidth]{QualityControl/illustrations/TestProcess}
   %\end{center}
-%Dies stellt einen möglichen Testprozess dar, der sich am V-Modell orientiert.
+%This represents a possible test process oriented to the V-Model.
 %\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Herausforderungen der Schritte im Testprozess}
+\frametitle{Challenges of the steps in the test process}
     \begin{itemize}
-    \item Identifikation von Testszenarien 
-         \begin{itemize}\item Was ist zu Testen? 
+    \item Identification of test scenarios (use cases)
+         \begin{itemize}\item What is to be tested?
          \end{itemize} 
-    \item Festlegung konkreter Testszenarien
+    \item Establishment of concrete test scenarios
           \begin{itemize}
-           \item Wie wird der Testling ausgeführt?
-           \item Welches Verhalten ist korrekt?
+           \item How is the test candidate executed?
+           \item What is the correct behavior?
           \end{itemize} 
-    \item Formalisierung von Tests 
-         \begin{itemize}\item Wie wird der Test spezifiziert? 
+    \item Formalization of tests 
+         \begin{itemize}\item How is the test specified? 
          \end{itemize} 
-    \item Ausführung von Tests 
-         \begin{itemize}\item Automatisierung!
+    \item Carrying out tests 
+         \begin{itemize}\item Automation!
          \end{itemize} 
-    \item Pflege und Wartung von Tests
-         \begin{itemize}\item Synchronisiert mit den Änderungen der fachlichen Software müssen (zumeist) die Tests angepasst und geändert werden.
+    \item Maintenance of tests
+         \begin{itemize}\item Synchronized with the changes in the business software, the tests must (mostly) be adapted and modified.
          \end{itemize} 
     \end{itemize}
 \end{frame}
@@ -217,37 +221,37 @@ Verifikation und Validation der Teilprodukte sind wesentliche Bestandteile des V
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Zielvorgaben beim Testen von Software}
+\frametitle{Objectives for software testing}
 \begin{itemize}
-  \item Es muss klar sein, welche Resultate beim Testen erwartet werden.
-  \item Einsatz \emph{systematischer} Techniken:
+  \item It must be clear what results are expected when testing.
+  \item Use of \emph{systematic} methods:
     \begin{itemize}
-      \item Auswahl der Testfälle möglichst nicht (nur) intuitiv oder zufällig.
+      \item Selection of test cases if possible not (only) intuitive or random.
     \end{itemize}
-  \item Die Ergebnisse sollten reproduzierbar sein. 
+  \item The results should be fully reproducible. 
     \begin{itemize}
-      \item Das ist insbesondere beim Testen paralleler Programme ein großes Problem.
+      \item This is a major problem especially when testing parallel programs.
     \end{itemize}
-  \item Fehler sollten nicht nur erkannt, sondern auch lokalisiert und behoben werden. %\citep{Rohr2007}.
+  \item Errors should not only be detected, but also localized and fixed. %\citep{Rohr2007}.
     \begin{itemize}
-      \item \glq Known bugs\grq\ zeugen nicht von hoher Qualität.
+      \item \glq Known bugs\grq\ are not a sign of high quality software.
     \end{itemize}       
-  \item Qualitäts-Anforderungen müssen mit möglichst hoher Genauigkeit geprüft werden.
+  \item Quality requirements must be checked with the highest accuracy possible.
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Pragmatische Sicht auf das Testen}
+\frametitle{Pragmatic view on testing}
 \begin{itemize}
-    \item Testen erlaubt Aussagen über die Qualität eines Softwaresystems 
-    \item Quantitative Metriken stützen Aussagen 
-         \begin{itemize}\item Testabdeckung etc. 
+    \item Testing allows conclusions about the quality of a software system 
+    \item Quantitative metrics support conclusions 
+         \begin{itemize}\item Test coverage etc. 
          \end{itemize} 
-    \item Automatisierte Regressionstests bieten eine Absicherung gegen Seiteneffekte bei Änderungen 
+    \item Automated regression tests provide protection against side effects of modifications 
 		\begin{itemize}
-			\item Unter einem Regressionstest versteht man die Wiederholung von Testfällen, um sicherzustellen, dass Modifikationen in bereits getesteten Teilen der Software keine neuen Fehler (``Regressionen'') verursachen. 
+			\item A regression test is the repetition of test cases to ensure that modifications in already tested parts of the software do not cause new errors (``regressions''). 
 		\end{itemize}
 \end{itemize}
 \end{frame}
@@ -255,9 +259,9 @@ Verifikation und Validation der Teilprodukte sind wesentliche Bestandteile des V
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Black Box vs. White Box Testen}
+\frametitle{Black-Box vs. White-Box Testing}
   \begin{center}
-  \includegraphics[width=.8\textwidth]{Qualitaetssicherung/abbildungen/BlackBoxAndWhiteBoxTesting}
+  \includegraphics[width=.8\textwidth]{QualityControl/illustrations/BlackBoxAndWhiteBoxTesting}
   \end{center}
 \end{frame}
 
