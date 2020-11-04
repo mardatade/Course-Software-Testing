@@ -1,84 +1,86 @@
-\mysubsubsection{White-Box Testen}
+\mysubsubsection{White-Box Testing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{White-box Testen von Modulen}
+\frametitle{White-box Testing of Modules}
 \framesubtitle{(testing in the small)}
 \begin{description}[Anwei]
-  \item[C0: Anweisungsüberdeckung:] Jede Anweisung soll durch eine geeignete Testmenge mindestens einmal durchlaufen werden (Anweisungsüberdeckungskriterium).
-  \item[C1: Kantenüberdeckung:] Jede Kante eines Kontrollflussgraphen soll mindestens einmal durchlaufen werden (Kantenüberdeckungskriterium).
-  \item[C2: Pfadüberdeckung:] Jeder Pfad vom Start- zum Endknoten soll durch eine geeignete Testmenge mindestens einmal durchlaufen werden (Pfadüberdeckungskriterium).
-  \item[C3: Bedingungsüberdeckung:] Jede mögliche Kombination der Teilbedingungen muss mindestens einmal durchlaufen werden (Bedingungsüberdeckungskriterium).
+  \item[C0: Statement Coverage:] All executable statements in the source code are executed at least once (Statement coverage criterion).
+  \item[C1: Edge coverage:] Each edge of the control graph being traversed at least once (Edge-coverage criterion).
+  \item[C2: Path (Branch) Coverage:] All paths leading from the initial to the final node of the control graph being traversed (Path-coverage criterion).
+  \item[C3: (Compound) Condition Coverage:] Each possible combination of conditions must be executed at least once (Condition coverage criterion).
 \end{description}
 \end{frame}
+%https://www.cs.colostate.edu/~bieman/CS314/Notes/GhoshFranceStructuralTesting.pdf
+%http://www.cas.mcmaster.ca/khedri/wp-content/uploads/COURSES/3S03/Tutorial04.pdf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Probleme mit der Anweisungsüberdeckung}
-\framesubtitle{C0: Anweisungsüberdeckung}
+\frametitle{Problems with Statement coverage}
+\framesubtitle{C0: Statement coverage}
 \begin{itemize}
-  \item Ist ein Programm ausreichend getestet, wenn jede Anweisung mindestens einmal ausgeführt wurde?
-  \item Wie bestimmt man eine minimale Testmenge? 
-  \item Ist es sinnvoll, auch leere Anweisungen (z.B. fehlendes \texttt{else}) zu überdecken? 
-  \item Die Struktur des Programms bleibt unberücksichtigt 
-  \item Grundsätzlich:\\
-        Überdeckung ist nicht entscheidbar!
+  \item Is a program sufficiently tested when each statement has been executed at least once?
+  \item How to determine a minimum test quantity? 
+  \item Is it useful to cover even empty statements (e.g. missing \texttt{else})? 
+  \item The structure of the program is not taken into account 
+  \item Basically:\\
+        Coverage is not decisive!
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Überdeckung aller Kanten eines Kontrollflussgraphen}
-\framesubtitle{C1: Kantenüberdeckung}
-Voraussetzung ist die Konstruktion eines Kontrollflussgraphen für ein (imperatives) Programm:
+\frametitle{Coverage of all edges of a control flow graph}
+\framesubtitle{C1: Edge-coverage}
+Precondition is the construction of a control flow graph for an (imperative) program:
 \begin{itemize}
-  \item Jede einfache Anweisung, die keine weiteren Anweisungen enthält, wird als Knoten dargestellt.
-  \item Bedingte Anweisungen werden als Verzweigungen dargestellt.
-  \item Schleifen werden als Zyklen und
-  \item Sequenzen durch Kanten zwischen Knoten dargestellt.
+  \item Every single statement, which does not contain any further statements, is represented as a node.
+  \item Conditional statements are represented as branches.
+  \item Loops are represented as cycles and 
+  \item Sequences by edges between nodes.
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Konstruktion von Kontrollflussgraphen}
+\frametitle{Construction of control flow graphs}
 \begin{center}
-\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/Kontrollflussgraphen}
+\pgfimage[width=\textwidth]{QualityControl/illustrations/ControlFlowGraphs}
 \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
-\frametitle{Beispiel: Programm zur Fakultätsberechnung}
+\frametitle{Example: Program for faculty computation}
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \lstset{language=Java,basicstyle=\small}
 \begin{lstlisting}
-public long fakultaet
+public long faculty
             (int n) {
   if (n < 0) {
     throw new 
       Exception();
   }
-  long fak = 1;
+  long fac = 1;
 
   while (n > 0) {
-    fak *= n;
+    fac *= n;
     n--;
    }
-  return fak;
+  return fac;
 }
 \end{lstlisting}
 \end{column}
 \pause
 \begin{column}{0.6\textwidth}
 \begin{center}
-\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/Fakultaetsberechnung}
+\pgfimage[width=\textwidth]{QualityControl/illustrations/FacultyCalculation}
 \end{center}
 \end{column}
 \end{columns}
@@ -87,39 +89,39 @@ public long fakultaet
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Testfälle zur Kantenüberdeckung}
+\frametitle{Test cases for Edge-coverage}
 \begin{tabular}{llp{0.2\textwidth}p{0.18\textwidth}p{0.28\textwidth}}
-\textbf{Nr} & \textbf{Klasse} & \textbf{Beschreibung des Testfalls} & \textbf{Erwartetes Ergebnis}  & \textbf{Beispielhafte Eingabedaten} \\
+\textbf{Nr} & \textbf{Class} & \textbf{Test case description} & \textbf{Expected Results}  & \textbf{Exemplary input data} \\
 ~\\
-1           & Normal          & Eingabeparame\-ter ist gültig	& Fakultät des Eingabeparameters	& 42 \\
-            & \multicolumn{4}{l}{Überprüfte Kanten: 2, 3, 4, 5, 6, 7} \\[2em]
-2           & Fehler          & Eingabeparame\-ter ist nicht gültig   & Exception & -1 \\
-            & \multicolumn{4}{l}{Überprüfte Kanten: 1}
+1           & Normal          & Input parameter is valid	& Faculty of the input parameter	& 42 \\
+            & \multicolumn{4}{l}{Checked edges: 2, 3, 4, 5, 6, 7} \\[2em]
+2           & Error          & Input parameter is invalid   & Exception & -1 \\
+            & \multicolumn{4}{l}{Checked edges: 1}
 \end{tabular}
 \end{frame}
 
 %%%%%%%
 
 \begin{frame}
-\frametitle{Zyklomatische Komplexität}
+\frametitle{Cyclomatic Complexity}
 \framesubtitle{\citet{McCabe1976,EbertCain2016}}
 \begin{itemize}
-  \item Hinter dieser Software-Metrik von McCabe steckt der Gedanke, dass ab einer bestimmten Komplexität ein Modul für Menschen nicht mehr begreifbar ist. 
-  \item Die zyklomatische Komplexität ist definiert als die Anzahl unabhängiger Pfade auf dem Kontrollflussgraphen eines Moduls.
-  \item Die zyklomatische Komplexität gibt an, wie viele Testfälle nötig sind, um eine Kantenüberdeckung zu erreichen.
-	\item Das Komplexitätsmaß nach McCabe ist gleich der Anzahl der binären Verzweigungen plus 1.
-	\item Laut McCabe sollte die zyklomatische Zahl eines in sich abgeschlossenen Teilprogramms nicht höher als 10 sein, da sonst das Programm zu komplex und zu schwer zu testen ist.
+  \item Behind this software metric by McCabe is the idea that above a certain complexity a module is no longer comprehensible to humans. 
+  \item The cyclomatic complexity is defined as the number of independent paths on the control flow graph of a module.
+  \item The cyclomatic complexity indicates how many test cases are needed to achieve Edge-coverage.
+  \item The complexity measure according to McCabe is equal to the number of binary branches plus 1.
+  \item According to McCabe, the cyclomatic number of a self-contained subprogram should not exceed 10, otherwise the program is too complex and too difficult to test.
 \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-\frametitle{Zyklomatische Komplexität: Beispiel}
+\frametitle{Cyclomatic Complexity: Example}
 \framesubtitle{\citet{McCabe1976,EbertCain2016}}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{center}
-\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/CylomaticComplexity}
+\pgfimage[width=\textwidth]{QualityControl/illustrations/CylomaticComplexity}
 \end{center}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -132,7 +134,7 @@ Path 3:  1,2,4,7,8\\
 \pause
 Path 4:  1,2,4,7,2,4,...7,8\\
 \bigskip\bigskip
-Zyklomatische Komplexität = 4
+Cyclomatic Complexity = 4
 \end{column}
 \end{columns}
 \end{frame}
@@ -143,26 +145,26 @@ Zyklomatische Komplexität = 4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %\begin{frame}[fragile]
-%\frametitle{Beispiel: Programm zur Sitzplatzreservierung}
+%\frametitle{Example: Seat Reservation Program}
 %\small
 %\begin{verbatim}
-%PROCEDURE Sitzplan; 
+%PROCEDURE SeatingPlan; 
 %BEGIN 
-    %If sitzplanliste.aktualisiert = neu  then 
+    %If seatingplanlist.updated = new  then 
     %BEGIN 
         %While (sitzplanliste <> nil)  do 
         %BEGIN   
-            %Case sitzplanliste.sitz.status of 
-              %CFrei: platz_ausgeben (frei); 
-              %CBelegt: platz_ausgeben (belegt); 
-              %CReserviert: platz_ausgeben (reserviert); 
+            %Case seatingplanlist.seat.status of 
+              %CFree: seat_print (free); 
+              %CUsed: seat_print (used); 
+              %CReserved: seat_print (reserved); 
             %END; 
-            %sitzplatzliste := sitzplatzliste.next; 
+            %seatingplanlist := seatingplanlist.next; 
         %END;
-        %sitzplanliste.aktualisiert := Caktualisiert; 
+        %seatingplanlist.updated := updated; 
     %END 
     %Else 
-        %fehlervar := nicht_neu,
+        %errorvar := not_new,
 %END;
 %\end{verbatim}
 %\end{frame}
@@ -170,46 +172,46 @@ Zyklomatische Komplexität = 4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %\begin{frame}
-%\frametitle{Kontrollflussdiagramm für Sitzplatzreservierung}
+%\frametitle{Control flow chart for seat reservation}
 %\begin{center}
-%\dgrafik{.8\textheight}{.7\textwidth}{Qualitaetssicherung/abbildungen/Sitzplatzreservierung}
+%\dgrafik{.8\textheight}{.7\textwidth}{QualityControl/illustrations/SeatReservation}
 %\end{center}
 %\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\begin{frame}
-%\frametitle{Testfälle zur Kantenüberdeckung}
+%\frametitle{Test cases for edge coverage}
 %\begin{tabular}{llp{0.2\textwidth}p{0.18\textwidth}p{0.28\textwidth}}
-%\textbf{Nr} & \textbf{Klasse} & \textbf{Beschreibung des Testfalls} & \textbf{Erwartetes Ergebnis}  & \textbf{Beispielhafte Eingabedaten} \\
-%1           & Normal          & Sitzplan ist neu                    & Ausgabe des Sitzplanes        & Neuer Sitzplan mit einem freien, einem belegten und einem reservierten Sitz muss als Parameter übergeben werden. \\
-            %& \multicolumn{4}{l}{Überprüfte Kanten: 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13} \\[2em]
-%2           & Fehler          & Sitzplan ist alt                    & Setzen der Fehlervariablen    & Sitzplan wurde seit der letzten Verwendung nicht verändert \\
-            %& \multicolumn{4}{l}{Überprüfte Kanten: 2, 3}
+%\textbf{Nr} & \textbf{Class} & \textbf{Test case description} & \textbf{Expected Results}  & \textbf{Exemplary input data} \\
+%1           & Normal          & Seating plan is new                    & Print seating plan        & New seating plan with one free, one occupied and one reserved seat must be passed as parameter. \\
+            %& \multicolumn{4}{l}{Checked edges: 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13} \\[2em]
+%2           & Error          & Seating plan is old                    & Set the error variables    & Seating plan has not been changed since last use \\
+            %& \multicolumn{4}{l}{Checked edges: 2, 3}
 %\end{tabular}
 %\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Anmerkungen zum Kantenüberdeckungskriterium}
+\frametitle{Notes on the Edge-coverage criterion}
 \begin{itemize}
-  \item Es wird erzwungen, dass jede Bedingung jeweils mit true und false durchlaufen wird.
-  \item Das Kantenüberdeckungskriterium ist somit \emph{schärfer} als das Anweisungsüberdeckungskriterium.
-  \item Gelegentlich jedoch nicht scharf genug:
+  \item It is enforced, that every condition is passed with true and false.
+  \item The edge coverage criterion is thus \emph{stronger} than the statement coverage criterion.
+  \item Occasionally however not strong enough:
     \begin{itemize}
-      \item Zusammengesetzte Bedingungen werden nicht hinreichend berücksichtigt.
+      \item Compound conditions are not sufficiently considered.
     \end{itemize}
-  \item Unzureichend für den Test von Schleifen
+  \item Insufficient for testing loops
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[fragile]
-\frametitle{Pfadüberdeckung}
-\framesubtitle{C2: Pfadüberdeckung}
- Auch bei einfachen Bedingungen kann die Kantenüberdeckung noch unzureichend sein:
+\frametitle{Path (Branch) Coverage}
+\framesubtitle{C2: Path (Branch) Coverage}
+ Even under simple conditions, the Edge-coverage can still be insufficient: Testing of loops
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \lstset{language=Java,basicstyle=\small}
@@ -231,8 +233,8 @@ else {
 \pause
 \begin{column}{0.7\textwidth}
 \begin{itemize}
-  \item Die Testmenge \{(x=0, z=1), (x=1, z=3)\} erfüllt zwar das Kantenüberdeckungskriterien, erkennt aber nicht die Division durch 0.
-  \item Abhängigkeiten bleiben unerkannt!
+  \item The test set \{(x=0, z=1), (x=1, z=3)\} meets the Edge-coverage criterion, but does not recognize the division by 0.
+  \item Dependencies remain undetected!
 \end{itemize}
 \end{column}
 \end{columns}
@@ -241,36 +243,36 @@ else {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Pfadüberdeckung (Fortsetzung)}
+\frametitle{Edge-coverage (continued)}
 \begin{itemize}
   \item Die Testmenge\\
    \{(x=0, z=1), (x=1, z=3), (x=0, z=3), (x=1, z=1)\}\\
-   erfüllt das Pfadüberdeckungskriterium.
-  \item Problem: Die Anzahl der Pfade wächst exponentiell mit der Länge des Programmcodes, so dass ein Testen mit dem Pfadüberdeckungskriterium unrealistisch ist.
-  \item Weiteres Problem: Anzahl Pfade für Schleifen.\\
-  Lösungsansatz: Heuristiken.\\
-   Beispielheuristik für die Anzahl von Schleifendurchläufen:
+   meets the Path-coverage criterion.
+  \item Problem: The number of paths grows exponentially with the length of the program code, so testing with the Path-coverage criterion is unrealistic.
+  \item Another problem: Number of paths for loops..\\
+  Solution: Heuristics.\\
+   Example heuristics for the number of loop cycles:
     \begin{itemize}
-      \item 0 mal
-      \item \emph{mittelmäßig} oft 
-      \item maximale Anzahl 
+      \item 0 times
+      \item \emph{moderately } often 
+      \item maximum count
     \end{itemize}
-  Grenzwerte sind wichtig!
+  Boundary values are important!
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Bedingungsüberdeckung}
+\frametitle{Condition coverage criterion}
 \framesubtitle{C3}
-Hierbei wird z.B.\\
+Here e.g.\\
 %\begin{lstlisting}
 \begin{quote}
 \texttt\sffamily{if (C1 and C2) ST;\\
 ~~else SF;}
 \end{quote}
-in die folgende Anweisung transformiert:\\
+is transformed into the following statement:\\
 \begin{quote}
 \texttt\sffamily{if (C1)\\
 ~~if (C2) ST\\
@@ -280,7 +282,7 @@ else SF}
 
 \vspace{\baselineskip}
 \begin{itemize}
-  \item Der neue Kontrollflussgraph überdeckt alle elementaren (Teil-)Bedingungen und macht damit \emph{versteckte} Kanten sichtbar.
-  \item Das Bedingungsüberdeckungskriterium ergibt somit ggf.\ noch schärfere Testmengen.
+  \item The new control flow graph covers all basic (sub)conditions and thus makes \emph{hidden} edges visible.
+  \item The condition coverage criterion may therefore result in even stronger test sets.
 \end{itemize}
 \end{frame}
