@@ -1,40 +1,40 @@
-\mysubsection{Kontinuierliche Integration}\label{ssec:ci}
+\mysubsection{Continuous integration}\label{ssec:ci}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \frametitle{Neue Features: \glqq Naiver\grqq\ Workflow}
+ \frametitle{New features: \glqq Naive\grqq\ Workflow}
  
-Typisches \glqq unstrukturiertes\grqq\ Vorgehen:
+Typical  \glqq unstructured \grqq\ approach:
 \begin{itemize}
-	\item Implementierung neuer Features
-   \item Aufruf und Test der Features aus Main-Methode, Ausgabe mit \textbf{System.out.println}
-   \item Manuelle Prüfung, ob Ergebnisse korrekt (oder zumindest plausibel) sind
-   \item Test-Code in Main-Methode wird später nicht mehr verwendet
+   \item Implementation of new features
+   \item Call and test of features from main method, output with \textbf{System.out.println}
+   \item Manual check whether results are correct (or at least plausible)
+   \item Test code in Main method is not used later
 \end{itemize}
  
  \pause
  
-Nachteile?
+Cons?
  \begin{itemize}
-	 \item Code in Main-Methode, der nicht \glqq dahin gehört\grqq
-		\item Test-Code wird verworfen, obwohl auch später noch sinnvoll
-		\item Tests werden nicht mehr ausgeführt
-   \item[$\rightarrow$] Regressionen werden nicht erkannt
+	 \item Code in Main method not  \glqq belonging there\grqq
+		\item Test code is discarded, although it is still useful later
+		\item Tests are no longer executed
+   \item[$\rightarrow$] Regressions are not recognized
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Kontinuierliche Integration}
-Wozu?
+\frametitle{Continuous integration}
+Why?
 \begin{itemize}
-  \item Integrations-Probleme werden kontinuierlich entdeckt.
-  \item Frühe Warnungen bei nicht zusammenpassenden Komponenten.
-  \item Regressions-Tests entdecken Fehler.
-  \item Die Entwickler werden zu einem verantwortlichen Umgang "`erzogen"'.
-  \item Beispiel-Werkzeug:
+  \item Integration errors are continuously identified
+  \item Early warnings for non-matching components
+  \item Regression tests identify errors
+  \item The developers are "`trained"' to be responsible
+  \item Tool example:
   \begin{itemize}
 	\item Jenkins \url{http://jenkins-ci.org/}
   \end{itemize}
@@ -42,78 +42,77 @@ Wozu?
 
 \vfill
 
-Siehe auch die Vorlesungen zu kontinuierlicher Integration für Kieker/ExplorViz und bei PPI.
+See also the lectures on continuous integration for Kieker/ExplorViz and at PPI.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Continuous Integration Environment}
-\framesubtitle{\tiny http://www.heise.de/developer/artikel/Continuous-Integration-in-Zeiten-agiler-Programmierung-1427092.html}
+\framesubtitle{\tiny Continuous Integration in Zeiten agiler Programmierung https://heise.de/-1427092}
   \begin{center}
-  \dgrafik{\textwidth}{0.3\textwidth}{Konfigurationsmanagement/abbildungen/ContinuousIntegrationEnvironment}
+  \dgrafik{\textwidth}{0.3\textwidth}{ConfigurationManagement/illustrations/ContinuousIntegrationEnvironment}
   \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mysubsubsection{Automatisiertes Testen}
+\mysubsubsection{Automated Testing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \frametitle{Automatisches Testen}
+ \frametitle{Automated Testing}
  
- Automatische Tests:
-  \begin{itemize}
-	 \item Test-Code in eigens dafür vorgesehenem Projektbereich
-		\item Ausführung wie \glqq Main-Methoden\grqq, aber Tool-Unterstützung für:
+ Automatic tests:
+  \begin{itemize}Test code in a specially designated area of the project
+		\item Execution like \glqq Main methods\grqq, but tool support for:
 		\begin{itemize}
-    \item Vergleich mit erwartetem Verhalten
-    \item automatische Durchführung aller Tests
-    \item Statistiken über bestandene, nicht bestandene Tests
+    \item Comparison with expected behavior
+    \item automatic execution of all tests
+    \item Statistics on completed and failed tests
    \end{itemize}
 
 \end{itemize}
 
  \pause
  
-Vorteile:
+Pros:
 \begin{itemize}
-	\item Trennung Funktionalität und Tests 
-   \item Tests bleiben erhalten
-   \item Tests können regelmäßig, automatisch ausgeführt werden\\
-      $\rightarrow$ Regressionen werden erkannt
-   \item Tests als \glqq Quality Gateway\grqq\ für Integration von neuem Code in den Master Branch bzw.\ Master Repository
+   \item Separation of functionality and tests
+   \item Tests are retained
+   \item Tests can be run continuously, automatically\\
+      $\rightarrow$ Regressions are identified
+   \item Tests as \glqq Qquality gateway\grqq\ for integration of new code into the master branch or master repository
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \frametitle{Automatisches Testen: JUnit}
+ \frametitle{Automated Testing: JUnit}
  
- \includegraphics[width=0.8cm]{Konfigurationsmanagement/abbildungen/junit.png}
+ \includegraphics[width=0.8cm]{ConfigurationManagement/illustrations/junit.png}
 \begin{itemize}
-   \item Erstveröffentlichung 2000
-   \item eclipse-Unterstützung seit 2002
-   \item Einbinden bsp.~mit Maven
+   \item First published 2000
+   \item eclipse-support since 2002
+   \item Integration e.g.~with Maven
 \end{itemize}
 \pause
  
-\includegraphics[width=0.8cm]{Konfigurationsmanagement/abbildungen/junit.png} in Softwaretechnik:
+\includegraphics[width=0.8cm]{ConfigurationManagement/illustrations/junit.png} in Softwaretechnik:
 \begin{itemize}
-	\item Struktur und Beispiel in Vorlesung
-   \item Details in Übung
-   \item Eure Abgaben: JUnit-Tests gefordert (Quality-Gateway bei Korrektur)
+   \item Structure and example in lecture
+   \item Details in exercise
+   \item Your submission: JUnit-Tests required (Quality-Gateway for correction)
 \end{itemize}
 %https://www.vogella.com/tutorials/JUnit/article.html
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[containsverbatim]{Eine Beispiel-Funktion}
-\framesubtitle{die getestet werden sollte \dots}
+\begin{frame}[containsverbatim]{An Demo-function}
+\framesubtitle{that should be tested \dots}
 \lstset{language=Java}
 \begin{lstlisting}[frame=single]
 package com.example.project;
@@ -127,20 +126,19 @@ public class Calculator {
 }
 \end{lstlisting}
 \begin{flushright}
-Schauen wir uns das einmal in eclipse an.
+Take a look at this in eclipse.
 \end{flushright}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[containsverbatim]{Eine Beispiel-Test}
+\begin{frame}[containsverbatim]{An Demo-function}
 \footnotesize
 \lstset{language=Java}
 \begin{lstlisting}[frame=single]
 package com.example.project;
 
-import static 
-         org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -180,28 +178,27 @@ class MyTest {
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \frametitle{Automatisches Testen: Resümee}
+ \frametitle{Automated Testing: Summary}
  
  Evaluation:
- \begin{itemize}
-	 \item  Automatische Tests machen kaum zusätzliche Arbeit!
-		\item Helfen, Qualitätsprobleme früh zu erkennen
+ \begin{itemize} Automatic tests cause few additional work!
+		\item Help to recognize quality problems early.
 \end{itemize}
  
 \pause
  
-Fragen:
+Questions:
 \begin{itemize}
-	\item Wie viele Tests sollte ich schreiben?
-   \item Welche Teile des Programms sollten getestet werden?
-   \item Und mit welchen Beispieldaten?
-   \item Woher weiß ich die \glqq erwarteten\grqq\ Ausgaben?
+   \item How many tests should I write?
+   \item Which parts of the software should be tested?
+   \item And what sample data?
+   \item From where do I know the  \glqq expected\grqq\ results?
    \item \dots
 \end{itemize}
 
 \pause
  
-Mehr dazu im Abschnitt \glqq Qualitätssicherung\grqq.
+More on this in the section \glqq Quality control\grqq.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -213,89 +210,86 @@ Mehr dazu im Abschnitt \glqq Qualitätssicherung\grqq.
 \begin{frame}[allowframebreaks]
  \frametitle{Mocking: Motivation}
  
-Unit Testing:
+Unit-Testing:
 \begin{itemize}
-   \item Code verwendet andere Objekte des Systems
-   \item Objekte müssen für Test verfügbar sein
+   \item Code uses other objects of the system
+   \item Objects must be accessible for testing
 \end{itemize}
-Schwierigkeiten:
+Issues:
  \begin{itemize}
-	   \item Unit-Testing! Kein komplettes System starten!
-		 \item Andere Objekte / Klassen eventuell noch nicht verfügbar!
+	   \item Unit-Testing! No complete system run!
+		 \item Other objects / classes may not be available yet!
 		 \item Performance
-    \item Echtes Objekt schwierig bereitzustellen:
+    \item Difficult to provide real object:
     \begin{itemize}
-     \item Spezifische Werte (Uhrzeit, Sensorwerte)
-     \item Fehlerzustände (Netzwerkfehler, \dots)
+     \item Specific parameters (time, sensor values)
+     \item Error states (network error, \dots)
     \end{itemize}
 \end{itemize}
 
  \pause 
-Beispiele:
+Examples:
 \begin{itemize}
-	 \item Time-Server
-   \item Datenbank
-   \item Temperatur-Sensor
-   \item Netzwerkdienste
+   \item Time-Server
+   \item Database
+   \item Temperature-Sensor
+   \item Network services
 \end{itemize}
 
-Mocking ist insbesondere für \glqq Test Driven Development\grqq\ relevant.
+Mocking is particularly relevant for \glqq Test Driven Development\grqq\.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \frametitle{Ansatz: Mock-Objekte}
+ \frametitle{Approach: Mock objects}
  
-Alternative: Mock-Objekte (auch: Test Double):
-\begin{itemize}
-	 \item Objekte, die echtes Verhalten nachahmen
-   \item Können im Test anstelle des echten Objekts verwendet werden
+Alternative: Mock objects (also: Test Doubles):
+\begin{itemize}Objects that resemble real behavior
+   \item Can be used in test instead of the real object.
 \end{itemize}
  
 \pause
 
 Interface: 
-\begin{itemize}
-	 \item Müssen anstelle des \glqq echten Objekts\grqq\ verwendet werden können\\
-		$\rightarrow$ Gleiches Interface (oder Teilmenge) wie echtes Objekt
+\begin{itemize} Must be usable instead of the \glqq real object\grqq\ \\
+		$\rightarrow$ Same interface (or subinterface) as real object
 \end{itemize}
 \pause
  
-Verhalten:
-\begin{itemize}
-	 \item \glqq Angelehnt\grqq\ an echtes Objekt\\
-		$\rightarrow$ für zu testenden Code: wie echtes Objekt
-		\item Explizites Herbeiführen von Werten, Zuständen, \dots\\
-   $\rightarrow$ für Test-Code:\\ konfigurierbar!
+Behaviour:
+\begin{itemize}\glqq Based on\grqq\ real object\\
+		$\rightarrow$ for code to be tested: like real object
+		\item Explicit triggering of values, states, \dots\\
+   $\rightarrow$ for Test-Code:\\ configurable!
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \frametitle{Mock-Objekte: Spektrum}
+ \frametitle{Mock objects: Differentiations}
  
-Einfachste Version: Stub-Objekte
+Most simple version: Stub object
 \begin{itemize}
-	\item Liefert immer feste Antworten auf Anfragen
-  \item Antworten können eventuell vom Test-Code gesetzt werden
+  \item Always returns fixed results to requests
+  \item Results can possibly be set by the test code
 \end{itemize}
 
  \dots
  \pause
  
-Komplexeste Version: Fake-Objekte
+Most complex version: Fake object
 \begin{itemize}
-	\item Funktionierende Implementierung
-  \item Einfacher als tatsächlich verwendetes Objekt
+  \item Working implementation as real object
+  \item Take shortcuts and behave in a much simpler way
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \frametitle{Mock-Objekte: Kategorien}
+ \frametitle{Mock objects: Categories}
   \framesubtitle{\url{https://martinfowler.com/articles/mocksArentStubs.html}}
  
  \begin{description}[Dummy objects]
@@ -315,8 +309,8 @@ Komplexeste Version: Fake-Objekte
 Übersicht:
 \begin{itemize}
 	\item \url{https://site.mockito.org/}
-   \item Java-Framework zum Erstellen von Mock-Objekten
-   \item Erste Version: 2008
+   \item Java-Framework for creating Mock objects
+   \item First release: 2008
 \end{itemize}
 
 If you use Mockito in tests you typically:
@@ -331,7 +325,7 @@ For example, you can verify that a method has been called with certain parameter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[containsverbatim,allowframebreaks]
- \frametitle{Mockito mit JUnit}
+ \frametitle{Mockito with JUnit}
 \footnotesize
 \lstset{language=Java}
 \begin{lstlisting}[frame=single]
@@ -371,26 +365,25 @@ Siehe auch \url{https://www.vogella.com/tutorials/Mockito/article.html}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
- \frametitle{Mocking: Resümee}
+ \frametitle{Mocking: Summary}
  
-Motivation: Komplexe Objekte für Test \glqq ersetzen\grqq:
+Motivation: \glqq Replace\grqq complex objects for test:
 \begin{itemize}
-  	\item Simulieren
-    \item Durch Dummies ersetzen
-    \item Zusätzlich Aufruf-Informationen sammeln
+  	\item Simulation
+    \item Replace with dummies
+    \item Collect additional debug information
 \end{itemize}
-Verhältnis zu Unit-Testing:
-\begin{itemize}
-	 \item Ergänzt assertions durch Verification: Testen von Interaktionen mit dem Mock-Objekt
+Connection to Unit-Testing:
+\begin{itemize}Extends assertions by Verification: Testing of interactions with mock objects
 \end{itemize}
-Verifikation:
+Verification:
 \begin{itemize}
-	\item Mock-Objekte speichern Aufrufinformationen. Dies erlaubt eine Überprüfung von Eigenschaften der \textit{Aufruf-History} der Mock-Objekte
-  \item \textbf{Achtung}: Nicht verwechseln mit formaler Verifikation!
+	\item Mock objects log function calls. This allows to check properties of the \textit{stack trace (call history)} of mock objects.
+  \item \textbf{Note}: Do not mistake for formal verification!
 \end{itemize}
 Unit Tests \textit{vs.} Mock-Verification?
 \begin{itemize}
-	\item Ergänzung, nicht Ersatz: Überprüfen unterschiedliche Aspekte!
-  \item \textbf{Mehr Details und Beispiele: Übung!}
+	\item Addition, not replacement: Check different aspects!
+  \item \textbf{More details and examples: practice!}
 \end{itemize}
 \end{frame}
