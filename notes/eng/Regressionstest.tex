@@ -1,0 +1,116 @@
+\mysubsubsection{Regression testing }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Regression testing}
+\begin{itemize}
+  \item A test tool saves all test cases that have been done.
+  \item This allows for an automatic repretition of all past tests after the software under test was changed.
+  \item Executes nominal-actual comparison:
+    \begin{itemize}
+      \item Input data for the test object
+      \item Expected outputs or reactions of test object
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\frametitle{Test Driven Development}
+%\framesubtitle{Testgetriebene Entwicklung}
+    %\begin{itemize}
+    %\item Martin Fowler:\\
+        %``Whenever you are tempted to type something into a print statement or a debugger expression, write it as a test instead.''
+    %\item ``One of the ironies of Test Driven Development is that it isn't a testing technique. It's an analysis technique, a design technique, really a technique structuring all the activities of development.'' \cite{Beck2002}.                  
+          %
+    %\item Testen als Spezifikation und Entwurfsmittel.
+          %
+    %\item Tests sind eine Form von ausf�hrbarer Dokumentation.
+          %
+    %\item Regressionstests sind ein n�tzlicher Nebeneffekt.
+          %
+    %\end{itemize}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\frametitle{Werkzeugunterst�tzung zum Testen}
+%\framesubtitle{Unit- und Integrations-Tests}
+%\begin{itemize}
+  %\item JUnit ist ein Testwerkzeug f�r Java \citep{Link2002}\\
+    %(\url{http://www.junit.org/}).
+	%\item Selenium-Integrations-Tests f�r Browser (\url{http://seleniumhq.org/}).
+	%\item testIT WebTester als UI-Testautomatisierungs-Framework f�r Web-Applikationen basierend auf Selenium (\url{https://www.novatec-gmbh.de/produkte/testit-webtester/}).
+%\end{itemize}
+%Unit-Tests und Integrations-Tests sind mit diesen Werkzeugen automatisch wiederholbar.
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+%\frametitle{Automatisierte Akzeptanztests}
+%\framesubtitle{\citep{FIT2005,FIT2006}}
+%\begin{itemize}
+  %\item Die zu pr�fende Gesch�ftslogik und die erwarteten
+    %Testergebnisse werden in Tabellenform dargestellt (HTML), so dass auch
+    %Fachexperten an der Erstellung und Durchf�hrung der Tests
+    %teilnehmen k�nnen.
+  %\item FIT (Framework for Integrated Test) ist ein Werkzeug,
+    %welches automatisierte und wiederholbare Akzeptanztests erlaubt
+    %(\url{http://fit.c2.com/})
+	%\item FitNesse erg�nzt FIT u.a.\ um ein Wiki zur kollaborativen Erstellung von Akzeptanztests (\url{http://www.fitnesse.org/})
+%\end{itemize}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Test driven development and refactoring}
+\begin{itemize}
+  \item Test driven development combines two techniques: 
+    \begin{itemize}
+      \item Test-driven programming for external evolution,
+      \item refactoring for internal evolution.
+    \end{itemize}
+  \item Refactoring\\
+        Changing a program with the aim of improving the internal structure without changing the (external) functionality.
+  \item Refactoring is allowed if all tests are passing.
+  \item Here, tests are a form of executable specification.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Continuous Integration}
+Aims for (among others):
+\begin{itemize}
+	\item Execution of static analyses (e.g., SpotBugs, Checkstyle)
+	\item Building the systems (e.g., Gradle)
+	\item Automated execution of tests (e.g.\ JUnit, Selenium) \citep{TestAutomation2013}
+	\item Checking of log and monitoring data (e.g.\ Kieker) \citep{SEN2015}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{DevOps: Development and operations}
+\framesubtitle{Continuous Testing, Delivery \&\ Deployment}
+\begin{center}
+\pgfimage[width=0.7\textwidth]{Qualitaetssicherung/abbildungen/DevOps2016}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Agility and reliability}
+\framesubtitle{By Continuous Testing, Example otto.de \citep{ICSA2017}}
+\begin{center}
+\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/DeploymentIncidentsBars}
+\end{center}
+\end{frame}
