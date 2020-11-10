@@ -1,0 +1,54 @@
+\mysubsubsection{Integration Testing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Integration testing}
+\framesubtitle{Testing in the large}
+\begin{itemize}
+  \item Testing individual modules separately does not guarantee a correct inter-operation of multiple modules.
+  \item Many modules cannot be tested in isolation.
+  \item Additionally: Steps for testing complex systems (modular testing):
+    \begin{itemize}
+      \item Modular tests (a.k.a.\ Unit Tests \&\ Components Tests)\\
+			Testing one component without context.
+      \item Incremental integration test of multiple components in their context.
+      \item System test: Test of the whole system in the application environment (end-to-end).
+    \end{itemize}
+	\item Acceptance tests (a.k.a.\ Funktional testing)\\
+Focus on testing of `cross cutting' functionality.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Integration test (contd.)}
+\begin{itemize}
+  \item For embedded real time systems, the interoperation of hardware and software needs to be tested.
+	\begin{itemize}
+		\item Digital Twins
+	\end{itemize}
+  \item Incremental testing should be preferred over \glq Big-Bang\grq testing, which directly goes for the full system right after unit testing.
+  \item A clear separation of interface and implementation makes integration testing easy.
+    \begin{itemize}
+      \item Esier swapping of \glq mock-ups\grq\ for \glq real\grq\ modules.\\
+			See, e.g., Mockito \url{https://github.com/mockito/}
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Incremental testing}
+\begin{center}
+\pgfimage[width=0.9\textwidth]{Qualitaetssicherung/abbildungen/Inkrementelles_Testen}\\
+"`Testger�st"'
+\end{center}
+ 
+\begin{itemize}
+	\item Incremental tests can be bottom-up, top-down (or even jo-jo), with respect to the hierarchy of composition.
+	\item A hieararchival architecture helps.
+\end{itemize}
+\end{frame}
