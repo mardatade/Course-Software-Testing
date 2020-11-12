@@ -1,4 +1,4 @@
-\mysubsubsection{Regression testing }
+\subsection{Regression testing }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10,7 +10,7 @@
   \item Executes nominal-actual comparison:
     \begin{itemize}
       \item Input data for the test object
-      \item Expected outputs or reactions of test object
+      \item Expected outputs or reactions of test object (passing result)
     \end{itemize}
 \end{itemize}
 \end{frame}
@@ -77,8 +77,8 @@
     \end{itemize}
   \item Refactoring\\
         Changing a program with the aim of improving the internal structure without changing the (external) functionality.
-  \item Refactoring is allowed if all tests are passing.
-  \item Here, tests are a form of executable specification.
+  \item Refactoring is valid if all tests are passing.
+  \item Here, tests are a form of software requirements specification (SRS).
 \end{itemize}
 \end{frame}
 
@@ -86,12 +86,12 @@
 
 \begin{frame}
 \frametitle{Continuous Integration}
-Aims for (among others):
+Task, i. a..:
 \begin{itemize}
 	\item Execution of static analyses (e.g., SpotBugs, Checkstyle)
 	\item Building the systems (e.g., Gradle)
-	\item Automated execution of tests (e.g.\ JUnit, Selenium) \citep{TestAutomation2013}
-	\item Checking of log and monitoring data (e.g.\ Kieker) \citep{SEN2015}
+	\item Automated testing (e.g.\ JUnit, Selenium) %\citep{TestAutomation2013}
+	\item Checking of log and monitoring data (e.g.\ Kieker) %\citep{SEN2015}
 \end{itemize}
 \end{frame}
 
@@ -99,9 +99,9 @@ Aims for (among others):
 
 \begin{frame}
 \frametitle{DevOps: Development and operations}
-\framesubtitle{Continuous Testing, Delivery \&\ Deployment}
+\framesubtitle{Continuous Testing, Delivery \& Deployment}
 \begin{center}
-\pgfimage[width=0.7\textwidth]{Qualitaetssicherung/abbildungen/DevOps2016}
+\pgfimage[width=0.7\textwidth]{images/Qualitaetssicherung/abbildungen/DevOps2016}
 \end{center}
 \end{frame}
 
@@ -109,8 +109,8 @@ Aims for (among others):
 
 \begin{frame}
 \frametitle{Agility and reliability}
-\framesubtitle{By Continuous Testing, Example otto.de \citep{ICSA2017}}
+\framesubtitle{By Continuous Testing, Example otto.de}%\citep{ICSA2017}
 \begin{center}
-\pgfimage[width=\textwidth]{Qualitaetssicherung/abbildungen/DeploymentIncidentsBars}
+\pgfimage[width=\textwidth]{images/Qualitaetssicherung/abbildungen/DeploymentIncidentsBars}
 \end{center}
 \end{frame}

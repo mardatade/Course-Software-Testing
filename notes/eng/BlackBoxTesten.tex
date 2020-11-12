@@ -1,4 +1,4 @@
-\mysubsubsection{Black-Box Testing}
+\subsection{Black-Box Testing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -6,7 +6,7 @@
 \frametitle{Black Box vs. White Box Testing}
   % TODO: Translate image
   \begin{center}
-  \includegraphics[width=.8\textwidth]{Qualitaetssicherung/abbildungen/BlackBoxAndWhiteBoxTesting}
+  \includegraphics[width=.8\textwidth]{images/Qualitaetssicherung/abbildungen/BlackBoxAndWhiteBoxTesting}
   \end{center}
 \end{frame}
 
@@ -15,10 +15,10 @@
 \begin{frame}
 \frametitle{Blackbox Testing of modules}
 \begin{itemize}
-  \item Idea: A part of a program is tested without looking at / knowing the code.
+  \item Idea: A part of a program is tested without knowledge of the internal implementation.
   \item Problem: How to define the test set? 
   \item Defining the test set can only rely on the specification.
-  \item Systematic generation of test sets requires formal specification.
+  \item Formal specifications are then a prerequisite for the systematic generation of test sets.
 \end{itemize}
 \end{frame}
 
@@ -34,7 +34,7 @@ Solutions for equations of the form:
 \begin{itemize}
   \item 1535: Tartaglia finds a solutions but keeps it to himself.
   \item Fior poses 30 problems to test this.
-  \item See \citep{Wussing_Arnold1975}
+  %\item See \citep{Wussing_Arnold1975}
 \end{itemize}
 \end{frame}
 
@@ -52,7 +52,7 @@ Solutions for equations of the form:
 \put(7,3){\vector(-1,0){5}}
 \put(4.5,1.8){\makebox(0,0){r', s', t'}}
 \put(2,1.5){\vector(1,0){5}}
-\put(9,1){\makebox(0,0)[tr]{pr�ft $r=r', s=s', t=t'$}}
+\put(9,1){\makebox(0,0)[tr]{verifies $r=r', s=s', t=t'$}}
 \end{picture}
 \end{center}
 \end{frame}
@@ -63,7 +63,7 @@ Solutions for equations of the form:
 %\begin{frame}
 %\frametitle{Blackbox Testing}
 %\begin{center}
-%\hspace*{4em} \pgfimage[width=0.8\textwidth]{Qualitaetssicherung/abbildungen/BlackboxTesten}
+%\hspace*{4em} \pgfimage[width=0.8\textwidth]{images/Qualitaetssicherung/abbildungen/BlackboxTesten}
 %\end{center}
 %\end{frame}
 %
@@ -73,7 +73,7 @@ Solutions for equations of the form:
 %\frametitle{Example: Testing a parser}
 %\underline{Idea:}
 %\begin{center}
-%\pgfimage[width=0.9\textwidth]{Qualitaetssicherung/abbildungen/Beispiel_Testen_eines_Parsers}
+%\pgfimage[width=0.9\textwidth]{images/Qualitaetssicherung/abbildungen/Beispiel_Testen_eines_Parsers}
 %\end{center}
 %\end{frame}
 
@@ -84,13 +84,13 @@ Solutions for equations of the form:
 \begin{itemize}
   \item Derive test cases from the program specification.
   \item Disregard program structure.
-  \item Aim for comprehensive but avoid redundant testing of the functionality.
-  \item Aim for functional coverage
+  \item Comprehensive but low-redundancy testing of the specified functionality.
+  \item The key factor is the functional coverage
   \item Defining a test case: 
     \begin{itemize}
-      \item Build equivalence classes
-      \item Test for extreme values
-      \item Test special values
+      \item Functional equivalence class formation (equivalence class partitioning)
+      \item Boundary value analysis
+      \item Special value testing
     \end{itemize}
 \end{itemize}
 \end{frame}
@@ -100,15 +100,16 @@ Solutions for equations of the form:
 \begin{frame}
 \frametitle{Equivalence Class Partitioning}
 \structure{Aim}\\
-Divide input and output parameter ranges into equivalence classes.
+Divide input parameter and output  ranges into equivalence classes.
+Devide the definition ranges of input parameters and value ranges of output parameters into equivalence classes from which test cases can be derived.
  
 \vspace{\baselineskip}
 \structure{Assumption}\\
-A program reacts to any representative value from an equivalence class exactly like it reacts to all other members of the class.
+When processing a representative from an equivalence class, a program behaves the same way as with all other values from this equivalence class.
  
 \vspace{\baselineskip}
 \structure{Representative value for a test case}\\
-Pick any value from the class.
+Pick any representative value from the class.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,7 +117,7 @@ Pick any value from the class.
 %\begin{frame}
 %\frametitle{Building equivalence classes}
 %\begin{center}
-%\pgfimage[width=0.5\textwidth]{Qualitaetssicherung/abbildungen/Aequivalenzklassenbildung}
+%\pgfimage[width=0.5\textwidth]{images/Qualitaetssicherung/abbildungen/Aequivalenzklassenbildung}
 %\end{center}
 %\end{frame}
 
@@ -125,8 +126,8 @@ Pick any value from the class.
 \begin{frame}
 \frametitle{Boundary Value Analysis}
 \begin{itemize}
-  \item Test cases that cover the boundary values of equivalence classes or that are in the vincinity of the boundaries uncover errors very often.
-  \item Do not just pick any element from the equivalence class.
+  \item Test cases that cover the boundary values of equivalence classes or that are in the immediate vicinity of the boundaries uncover errors very often.
+  \item Not any element from the equivalence class is valid as representative for all boundaries.
   \item Pick one or more elements such that every boundary of the equivalence class is tested.
 \end{itemize}
 \end{frame}
@@ -136,14 +137,14 @@ Pick any value from the class.
 \begin{frame}
 \frametitle{Equivalence classes with boundary values}
 \begin{center}
-\pgfimage[width=0.95\textwidth]{Qualitaetssicherung/abbildungen/AequivalenzklassenMitGrenzwerten}
+\pgfimage[width=0.95\textwidth]{images/Qualitaetssicherung/abbildungen/AequivalenzklassenMitGrenzwerten}
 \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{specification for a search function}
+\frametitle{Specification for a search function}
 \begin{tabbing}
 \hspace*{2em} \= \hspace{2em} \= \kill
 \textbf{procedure} Search (Key : ELEM ; T: ELEM\_ARRAY;\\
@@ -164,21 +165,22 @@ Pick any value from the class.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Building equivalence classes}
+\frametitle{Equivalence Class Formation}
 \framesubtitle{based on the specification}
 \begin{itemize}
-  \item Inputs that fulfil the pre-condition 
-  \item Inputs that do not fulfil the pre-condition
+  \item Inputs that fulfill the pre-condition 
+  \item Inputs that fail the pre-condition
   \item Inputs for which the key element is in the array
   \item Inputs for which the key element is not in the array
   \item Input sets
     \begin{itemize}
       \item With 0 elements
-      \item Withe 1 element
+      \item With 1 element
       \item With multiple elements
     \end{itemize}
 \end{itemize}
 \end{frame}
+%http://www.cs.wm.edu/~kemper/cs435/slides/l14.pdf
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -209,9 +211,9 @@ More than 1 value   & Not in sequence \\ \hline
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Black Box and White Box Testen}
+\frametitle{Black Box and White Box Testing}
   \begin{center}
-  \includegraphics[width=.8\textwidth]{Qualitaetssicherung/abbildungen/BlackBoxAndWhiteBoxTesting}
+  \includegraphics[width=.8\textwidth]{images/Qualitaetssicherung/abbildungen/BlackBoxAndWhiteBoxTesting}
   \end{center}
 \end{frame}
 
@@ -227,7 +229,7 @@ Fuzzing:
 	\item This is especially interesting for uncovering security relevant vulnerabilities.
 \end{itemize}
 \item Fuzzing is usually applied in black box testing to understand error affinity of new software and to detect vulnerabilities.
-\item If a software reproducibly generates a problem (e.g. crashes) under fuzzy testing, white box tests can be used to find the exact cause. 
+\item If a software reproducible generates a problem (e.g. crashes) under fuzzy testing, white box tests can be used to find the specific cause. 
 \end{itemize}
 \end{frame}
 
@@ -236,14 +238,14 @@ Fuzzing:
 \begin{frame}
 \frametitle{Test Oracle}
   \begin{center}
-  \includegraphics[width=\textwidth]{Qualitaetssicherung/abbildungen/TestOracle}
+  \includegraphics[width=\textwidth]{images/Qualitaetssicherung/abbildungen/TestOracle}
   \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Are there classes of software that do not have a test oracle}
+\frametitle{Are there types of software that do not have a test oracle}
   \begin{center}
   \url{https://monti.com}  % unreachable
   \end{center}
@@ -255,19 +257,19 @@ Fuzzing:
 \frametitle{The oracle problem}
 \framesubtitle{It is not always possible to define a test oracle}
   \begin{center}
-\only<beamer>{\includegraphics[width=\textwidth]{Qualitaetssicherung/abbildungen/TestOracleProblem}}
+\only<beamer>{\includegraphics[width=\textwidth]{images/Qualitaetssicherung/abbildungen/TestOracleProblem}}
   \end{center}
 	Was tun? \\
-	\citet{MetamorphicTesting2016,segura_metamorphic_2020,kanewala_metamorphic_2019}
+	%\citet{MetamorphicTesting2016,segura_metamorphic_2020,kanewala_metamorphic_2019}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Application of metamorphic testing}
-\framesubtitle{\citet{segura_metamorphic_2020}}
+%\framesubtitle{\citet{segura_metamorphic_2020}}
   \begin{center}
-\only<beamer>{\includegraphics[width=.65\textwidth]{Qualitaetssicherung/abbildungen/MetamorphicTesting}}
+  \includegraphics[width=.65\textwidth]{images/Qualitaetssicherung/abbildungen/MetamorphicTesting}
   \end{center}
 \end{frame}
 

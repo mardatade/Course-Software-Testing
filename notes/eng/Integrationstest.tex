@@ -1,4 +1,4 @@
-\mysubsubsection{Integration Testing}
+\subsection{Integration Testing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -11,11 +11,11 @@
   \item Additionally: Steps for testing complex systems (modular testing):
     \begin{itemize}
       \item Modular tests (a.k.a.\ Unit Tests \&\ Components Tests)\\
-			Testing one component without context.
+			Testing a component without context.
       \item Incremental integration test of multiple components in their context.
       \item System test: Test of the whole system in the application environment (end-to-end).
     \end{itemize}
-	\item Acceptance tests (a.k.a.\ Funktional testing)\\
+	\item Acceptance tests (a.k.a.\ Funktional tests)\\
 Focus on testing of `cross cutting' functionality.
 \end{itemize}
 \end{frame}
@@ -32,7 +32,7 @@ Focus on testing of `cross cutting' functionality.
   \item Incremental testing should be preferred over \glq Big-Bang\grq testing, which directly goes for the full system right after unit testing.
   \item A clear separation of interface and implementation makes integration testing easy.
     \begin{itemize}
-      \item Esier swapping of \glq mock-ups\grq\ for \glq real\grq\ modules.\\
+      \item Easier swapping of \glq mock-ups\grq\ for \glq real\grq\ modules.\\
 			See, e.g., Mockito \url{https://github.com/mockito/}
     \end{itemize}
 \end{itemize}
@@ -43,12 +43,12 @@ Focus on testing of `cross cutting' functionality.
 \begin{frame}
 \frametitle{Incremental testing}
 \begin{center}
-\pgfimage[width=0.9\textwidth]{Qualitaetssicherung/abbildungen/Inkrementelles_Testen}\\
-"`Testger�st"'
+\pgfimage[width=0.9\textwidth]{images/Qualitaetssicherung/abbildungen/Inkrementelles_Testen}\\
+"`Test framework"'
 \end{center}
  
 \begin{itemize}
 	\item Incremental tests can be bottom-up, top-down (or even jo-jo), with respect to the hierarchy of composition.
-	\item A hieararchival architecture helps.
+	\item A hierarchical architecture is very effective for this purpose.
 \end{itemize}
 \end{frame}
