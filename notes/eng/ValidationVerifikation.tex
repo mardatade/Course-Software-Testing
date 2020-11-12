@@ -4,23 +4,23 @@
 
 Quality control for software:
 \begin{itemize}
-	\item Known: Software errors occur in practice.
+  \item Known: Software errors occur in practice.
   \item Goal: Prevent errors \textbf{at least} in live software.
 \end{itemize}
 Options?
  \pause
 \begin{itemize}
-	\item Code Review
+  \item Code Review
    \begin{itemize}
     \item four-eyes principle
     \item Team Review, if applicable via pair programming
    \end{itemize} \pause
-   \item Tests
+  \item Tests
    \begin{itemize}
     \item Manually
     \item Automatically
    \end{itemize} \pause
-   \item Formal methods
+  \item Formal methods
    \begin{itemize}
     \item Formal verification
     \item Proofs of Program Correctness 
@@ -32,24 +32,23 @@ Options?
 
 \begin{frame}
 \frametitle{Things we do not want: Bugs}
-\framesubtitle{\citep{Binder1999}}
-
-\only<beamer>{  \begin{center}
-  \includegraphics[width=.85\textwidth]{QualityControl/image/Bug}
+%\framesubtitle{\citep{Binder1999}}
+  \begin{center}
+  \includegraphics[width=.85\textwidth]{images/Qualitaetssicherung/abbildungen/Bug}
   \end{center}
-}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mysubsection{Validation \& Verification}
+\section{Validation \& Verification}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \frametitle{Validation and verification of software}
 \begin{itemize}
-  \item Validation and verification of the implemented software system \citep{Boehm1984,FisherVV2007}:
+  \item Validation and verification of the implemented software system:%\citep{Boehm1984,FisherVV2007}:
     \begin{itemize}
       \item "`Do we build the system right?"' (Verification)\\
             Check  that the system meets the requirements
@@ -68,7 +67,7 @@ Options?
 
 \begin{frame}\frametitle{Validation and Verification: Roles}
 \begin{center}
-\includegraphics[width=\textwidth]{QualityControl/image/ValidationVerification}
+\includegraphics[width=\textwidth]{images/Qualitaetssicherung/abbildungen/ValidationVerifikation}
 \end{center}
 \end{frame}
 
@@ -131,7 +130,7 @@ The behavior of a system is analyzed to derive whether the behavior is correct.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mysubsection{Testing}
+\subsection{Testing}
 
 \begin{frame}
 \frametitle{Testing for verification}
@@ -156,7 +155,7 @@ Select test cases in such a way that the probability of finding errors or ruling
 \frametitle{The V-Model}
 \framesubtitle{Use especially by military and governmental authorities.}
 \begin{center}
-\pgfimage[width=\textwidth]{QualityControl/image/VModel}
+\pgfimage[width=\textwidth]{images/Qualitaetssicherung/abbildungen/VModel}
 \end{center}
 Verification and validation of the sub-products are essential components of the V-Model.
 \end{frame}
@@ -172,7 +171,7 @@ Verification and validation of the sub-products are essential components of the 
       \item[$\rightarrow$] Develop test cases before implementation
     \end{itemize}
   \item Basic problem: \\
-        ``Program testing can be used to show the presence of bugs, but never to show their absence.'' \citep{Dijkstra72}
+        ``Program testing can be used to show the presence of bugs, but never to show their absence.'' %\citep{Dijkstra72}
   \item Questions to answer:
    \begin{itemize}
   	\item How to determine suitable test cases and test plans? 
@@ -188,7 +187,7 @@ Verification and validation of the sub-products are essential components of the 
 %\frametitle{The test process}
 %\framesubtitle{\citep{Sommerville2018}}
   %\begin{center}
-  %\includegraphics[width=1.05\textwidth]{QualityControl/image/TestProcess}
+  %\includegraphics[width=1.05\textwidth]{images/Qualitaetssicherung/abbildungen/TestProcess}
   %\end{center}
 %This represents a possible test process oriented to the V-Model.
 %\end{frame}
@@ -261,7 +260,7 @@ Verification and validation of the sub-products are essential components of the 
 \begin{frame}
 \frametitle{Black-Box vs. White-Box Testing}
   \begin{center}
-  \includegraphics[width=.8\textwidth]{QualityControl/image/BlackBoxAndWhiteBoxTesting}
+  \includegraphics[width=.8\textwidth]{images/Qualitaetssicherung/abbildungen/BlackBoxAndWhiteBoxTesting}
   \end{center}
 \end{frame}
 

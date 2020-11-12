@@ -1,4 +1,4 @@
-\mysubsection{Continuous integration}\label{ssec:ci}
+\section{Continuous integration}\label{ssec:ci}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -51,13 +51,13 @@ See also the lectures on continuous integration for Kieker/ExplorViz and at PPI.
 \frametitle{Continuous Integration Environment}
 \framesubtitle{\tiny Continuous Integration in Zeiten agiler Programmierung https://heise.de/-1427092}
   \begin{center}
-  \dgrafik{\textwidth}{0.3\textwidth}{ConfigurationManagement/image/ContinuousIntegrationEnvironment}
+  \pgfimage[width=0.3\textwidth]{images/Konfigurationsmanagement/abbildungen/ContinuousIntegrationEnvironment}
   \end{center}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mysubsubsection{Automated Testing}
+\subsection{Automated Testing}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -65,9 +65,10 @@ See also the lectures on continuous integration for Kieker/ExplorViz and at PPI.
  \frametitle{Automated Testing}
  
  Automatic tests:
-  \begin{itemize}Test code in a specially designated area of the project
-		\item Execution like \glqq Main methods\grqq, but tool support for:
-		\begin{itemize}
+  \begin{itemize}
+  \item Test code in a specially designated area of the project
+  \item Execution like \glqq Main methods\grqq, but tool support for:
+  \begin{itemize}
     \item Comparison with expected behavior
     \item automatic execution of all tests
     \item Statistics on completed and failed tests
@@ -92,7 +93,7 @@ Pros:
 \begin{frame}
  \frametitle{Automated Testing: JUnit}
  
- \includegraphics[width=0.8cm]{ConfigurationManagement/image/junit.png}
+ \includegraphics[width=0.8cm]{images/Konfigurationsmanagement/abbildungen/junit.png}
 \begin{itemize}
    \item First published 2000
    \item eclipse-support since 2002
@@ -100,7 +101,7 @@ Pros:
 \end{itemize}
 \pause
  
-\includegraphics[width=0.8cm]{ConfigurationManagement/image/junit.png} in Softwaretechnik:
+\includegraphics[width=0.8cm]{images/Konfigurationsmanagement/abbildungen/junit.png} in Softwaretechnik:
 \begin{itemize}
    \item Structure and example in lecture
    \item Details in exercise
@@ -181,8 +182,9 @@ class MyTest {
  \frametitle{Automated Testing: Summary}
  
  Evaluation:
- \begin{itemize} Automatic tests cause few additional work!
-		\item Help to recognize quality problems early.
+ \begin{itemize} 
+  \item Automatic tests cause few additional work!
+  \item Help to recognize quality problems early.
 \end{itemize}
  
 \pause
@@ -203,7 +205,7 @@ More on this in the section \glqq Quality control\grqq.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mysubsubsection{Mocking}
+\subsection{Mocking}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -236,7 +238,7 @@ Examples:
    \item Network services
 \end{itemize}
 
-Mocking is particularly relevant for \glqq Test Driven Development\grqq\.
+Mocking is particularly relevant for \glqq Test Driven Development\grqq.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -245,22 +247,25 @@ Mocking is particularly relevant for \glqq Test Driven Development\grqq\.
  \frametitle{Approach: Mock objects}
  
 Alternative: Mock objects (also: Test Doubles):
-\begin{itemize}Objects that resemble real behavior
-   \item Can be used in test instead of the real object.
+\begin{itemize}
+  \item Objects that resemble real behavior
+  \item Can be used in test instead of the real object.
 \end{itemize}
  
 \pause
 
 Interface: 
-\begin{itemize} Must be usable instead of the \glqq real object\grqq\ \\
+\begin{itemize} 
+  \item Must be usable instead of the \glqq real object\grqq\ \\
 		$\rightarrow$ Same interface (or subinterface) as real object
 \end{itemize}
 \pause
  
 Behaviour:
-\begin{itemize}\glqq Based on\grqq\ real object\\
-		$\rightarrow$ for code to be tested: like real object
-		\item Explicit triggering of values, states, \dots\\
+\begin{itemize}
+  \item \glqq Based on\grqq\ real object\\
+   $\rightarrow$ for code to be tested: like real object
+  \item Explicit triggering of values, states, \dots\\
    $\rightarrow$ for Test-Code:\\ configurable!
 \end{itemize}
 \end{frame}
@@ -306,7 +311,7 @@ Most complex version: Fake object
 \begin{frame}
  \frametitle{Framework: Mockito}
  
-Übersicht:
+Ãœbersicht:
 \begin{itemize}
 	\item \url{https://site.mockito.org/}
    \item Java-Framework for creating Mock objects
@@ -369,21 +374,22 @@ Siehe auch \url{https://www.vogella.com/tutorials/Mockito/article.html}
  
 Motivation: \glqq Replace\grqq complex objects for test:
 \begin{itemize}
-  	\item Simulation
-    \item Replace with dummies
-    \item Collect additional debug information
+  \item Simulation
+  \item Replace with dummies
+  \item Collect additional debug information
 \end{itemize}
 Connection to Unit-Testing:
-\begin{itemize}Extends assertions by Verification: Testing of interactions with mock objects
+\begin{itemize}
+  \item Extends assertions by Verification: Testing of interactions with mock objects
 \end{itemize}
 Verification:
 \begin{itemize}
-	\item Mock objects log function calls. This allows to check properties of the \textit{stack trace (call history)} of mock objects.
+  \item Mock objects log function calls. This allows to check properties of the \textit{stack trace (call history)} of mock objects.
   \item \textbf{Note}: Do not mistake for formal verification!
 \end{itemize}
 Unit Tests \textit{vs.} Mock-Verification?
 \begin{itemize}
-	\item Addition, not replacement: Check different aspects!
+  \item Addition, not replacement: Check different aspects!
   \item \textbf{More details and examples: practice!}
 \end{itemize}
 \end{frame}
