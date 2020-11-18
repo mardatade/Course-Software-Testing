@@ -1,0 +1,115 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Unit Test}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Unit Test}
+  \scriptsize
+ \begin{description}
+ \item [Automatic unit tests:] \hfill
+  \begin{itemize}
+  \item Test code in a specially designated area of the project
+  \item Execution like \alert{Main methods} but tool support for:
+  \begin{itemize}
+    \item Comparison with expected behavior
+    \item automatic execution of all tests
+    \item Statistics on completed and failed tests
+   \end{itemize}
+\end{itemize}
+\end{description}
+ \pause
+ 
+ \begin{description}
+ \item [Pros:] \hfill
+\begin{itemize}
+   \item Separation of functionality and tests
+   \item Tests are retained
+   \item Tests can be run continuously, automatically\\
+      $\rightarrow$ Regressions are identified
+   \item Tests as \alert{quality gateway} for integration of new code into the master branch or master repository
+\end{itemize}
+\end{description}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Demo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[containsverbatim]{An Demo-function}
+\scriptsize
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+package com.example.project;
+
+public class Calculator {
+	public int add(int a, int b) {
+		return a - b;
+	}
+}
+\end{lstlisting}
+\begin{flushright}
+Take a look at this in eclipse.
+\end{flushright}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[containsverbatim]{An Demo-function}
+\scriptsize
+\lstset{language=Java}
+\begin{lstlisting}[frame=single]
+package com.example.project;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+class MyTest {
+	@Test
+	@DisplayName("1 + 1 = 2")
+	void addsTwoNumbers() {
+	   Calculator calculator = new Calculator();
+	   assertEquals(2, calculator.add(1, 1), "1 + 1 should equal 2");
+	}
+}
+\end{lstlisting}
+\begin{flushright}
+\tiny \semitransp{https://github.com/junit-team/junit5-samples/}
+\end{flushright}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Summary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Unit Test: Summary}
+ 
+ \begin{description}
+ \item [Evaluation:] \hfill
+ \begin{itemize} 
+  \item Automatic tests cause few additional work!
+  \item Help to recognize quality problems early.
+\end{itemize}
+\end{description}
+ 
+\pause
+ 
+ \begin{description}
+ \item [Questions:] \hfill
+\begin{itemize}
+   \item How many tests should I write?
+   \item Which parts of the software should be tested?
+   \item And what sample data?
+   \item From where do I know the  \glqq expected\grqq\ results?
+\end{itemize}
+\end{description}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

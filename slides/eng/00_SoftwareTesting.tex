@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+\subsection{What is software testing?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{What is software testing?}
+
+\begin{block}{Testing:}
+\begin{itemize}
+\item Testing is the process of executing a program with the intent of finding errors \semitransp{(Myers, G.J., 1979. The Art of Software Testing John Wiley and Sons Ltd.)}
+\item Software testing is the process of exercising or evaluating a system or system component by manual or automated means to verify that it satisfies specified requirements. \semitransp{(IEEE 83a)}
+\end{itemize}
+\end{block}
+
+\pause
+
+\begin{block}{Principle of Testing:}
+Testing can show presence of bugs but not absence or a proof of correctness. No bug found shows not a correct system.
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{New features: \glqq Naive\grqq\ Workflow}
+ 
+Typical  \glqq unstructured \grqq\ approach:
+\begin{itemize}
+   \item Implementation of new features
+   \item Call and test of features from main method, output with \textbf{System.out.println}
+   \item Manual check whether results are correct (or at least plausible)
+   \item Test code in Main method is not used later
+\end{itemize}
+ 
+ \pause
+ 
+Cons?
+ \begin{itemize}
+	 \item Code in Main method not  \glqq belonging there\grqq
+		\item Test code is discarded, although it is still useful later
+		\item Tests are no longer executed
+   \item[$\rightarrow$] Regressions are not recognized
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Techniques \& Approaches}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Testing Techniques}
+  \begin{center}
+  \pgfimage[width=.55\textwidth]{images/Einleitung/abbildungen/test_technique}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Testing Approaches}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Testing Approaches}
+
+\begin{itemize}
+\item<1-> Level of \alert<1>{knowledge} and \alert<1>{access} to implementation
+\begin{itemize}
+\item Whitebox Testing
+\item Blackbox Testing
+\end{itemize}
+\end{itemize}
+
+\begin{minipage}[t]{0.49\textwidth}
+\begin{itemize}
+\item<2-> \alert<2>{Testing scope}
+\begin{itemize}
+\item System testing
+\item Module testing
+\item Integration testing
+\item Unit testing
+\end{itemize}
+\end{itemize}
+\end{minipage}
+%
+\begin{minipage}[t]{0.49\textwidth}
+\begin{itemize}
+\item<3-> \alert<3>{Concepts}
+\begin{itemize}
+\item Regression Testing
+\item Fuzzing
+\item Metamorphic testing
+\item Design by Contract
+\item Machine Learning
+\item \ldots
+\end{itemize}
+\end{itemize}
+\end{minipage}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Test Oracle}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Test Oracle}
+  \begin{center}
+  \pgfimage[width=0.6\textwidth]{images/Qualitaetssicherung/abbildungen/TestOracle}
+  \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Concepts by type of Test Oracle}
+  \begin{center}
+  \pgfimage[width=0.55\textwidth]{images/Einleitung/abbildungen/tr3}
+  \end{center}
+\end{frame}

@@ -1,0 +1,46 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Mocking}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Categories}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+ \frametitle{Mock objects: Categories}
+ \footnotesize
+ \begin{description}
+  \item[Dummy objects] are passed around but never actually used. Usually they are just used to fill parameter lists.
+  \item[Fake objects] actually have working implementations, but usually take some shortcut which makes them not suitable for production (an in-memory database is a good example).
+  \item[Stubs] provide canned answers to calls made during the test, usually not responding at all to anything outside what's programmed in for the test.
+  \item[Spies] are stubs that also record some information based on how they were called.
+  \item[Mocks] are [\dots] objects pre-programmed with expectations which form a specification of the calls they are expected to receive.
+ \end{description}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Summary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+ \frametitle{Mocking: Summary}
+ 
+\begin{description}
+\item [Motivation:] \alert{Replace} complex objects for test:
+\begin{itemize}
+  \item Simulation
+  \item Replace with dummies
+  \item Collect additional debug information
+\end{itemize}
+\item [Connection to Unit-Testing:] \alert{Extends assertions} by Verification. Testing of interactions with mock objects.
+\item [Verification:]
+\begin{itemize}
+  \item [] Mock objects log function calls. This allows to check properties of the \textit{stack trace (call history)} of mock objects.
+  \item [] \alert{No formal verification}
+\end{itemize}
+\item [Unit Tests \textit{vs.} Mock-Verification?] \alert{Addition, not replacement} but different aspects.
+\end{description}
+\end{frame}

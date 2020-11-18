@@ -1,11 +1,17 @@
 \PassOptionsToPackage{pdftex}{graphicx} % pdftex hack fuer graphicx
 \documentclass[pdftex,hyperref=pdftex,12pt,aspectratio=169]{beamer}
+\mode<presentation>
+{
+\usetheme{Warsaw}
+\setbeamercovered{invisible}
+}
 %\usetheme[fakultaet-oder-cau]{CAU2013}
 \usepackage[style=authoryear,citestyle=authoryear,backend=biber]{biblatex}
 \addbibresource{references.bib}
 
 \renewcommand{\bibfont}{\ttfamily}
 
+\usepackage{listings}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -19,7 +25,46 @@
 \usepackage{multicol}
 \usepackage{xcolor}
 \newcommand\mynote[1]{\textcolor{red}{#1}}
+\newcommand{\semitransp}[2][35]{\textcolor{fg!#1}{#2}}
 %\usepackage[notocbib]{apacite}
+
+% Variable width block
+\newenvironment<>{varblock}[2][0.9\textwidth]{%
+    \setlength{\textwidth}{#1}%
+    \setlength{\linewidth}{\textwidth}% required to itemize respect the width of block
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \usebeamertemplate{block begin}}
+  {\par%
+  \usebeamertemplate{block end}%
+  \end{actionenv}}
+
+% Variable width example block
+\newenvironment<>{varexampleblock}[2][0.9\textwidth]{%
+    \setlength{\textwidth}{#1}%
+    \setlength{\linewidth}{\textwidth}%
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \setbeamercolor{local structure}{parent=example text}%
+    \usebeamertemplate{block example begin}}
+  {\par%
+  \usebeamertemplate{block example end}%
+    \end{actionenv}}
+
+% Variable width alert block
+\newenvironment<>{varalertblock}[2][0.9\textwidth]{%
+    \setlength{\textwidth}{#1}%
+    \setlength{\linewidth}{\textwidth}%
+  \begin{actionenv}#3%
+    \def\insertblocktitle{#2}%
+    \par%
+    \setbeamercolor{local structure}{parent=alerted text}%
+    \usebeamertemplate{block alerted begin}}
+  {\par%
+  \usebeamertemplate{block alerted end}%
+    \end{actionenv}}
 
 %% Beamer Bibliography Fix
 %\def\newblock{\hskip .11em plus .33em minus .07em}
@@ -33,10 +78,16 @@
 
 \title{Course-Software-Testing}
 \subtitle{MarDATA} 
-\author[Prigge, Rath, Hiremath, Gundlach]{Enno Prigge \and Willi Rath \and Dilip Hiremath \and Sven Gundlach\\[3mm]
-Kiel University
-}
+\author[Prigge, Rath, Hiremath, Gundlach]{Enno Prigge \and Willi Rath \and Dilip Hiremath \and Sven Gundlach\\[3mm]Kiel University}
 \date[18-11-2020]{18\textsuperscript{th} November 2020}
+
+\AtBeginSection[]
+{
+\begin{frame}<beamer>
+\frametitle{Structure}
+\tableofcontents[currentsection, subsectionstyle=hide]
+\end{frame}
+}
 
 %% language settings
 \selectlanguage{american}
@@ -45,6 +96,9 @@ Kiel University
 
 %% remove Figure from caption
 \setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+
+
 
 %\ttfamily
 
@@ -66,7 +120,23 @@ Kiel University
 \end{frame}
 }
 
-\include{slides}
+\begin{frame}
+\frametitle{Structure}
+\tableofcontents[subsectionstyle=hide]
+ % You might wish to add the option [pausesections]
+\end{frame}
+
+\include{eng/00_SoftwareTesting}
+\include{eng/01_Terms}
+\include{eng/02_FundamentalProcess}
+%\include{eng/03_TestingActivities}
+\include{eng/04_Testcoverage}
+%\include{eng/05_Technique}
+\include{eng/06_WhiteboxBlackbox}
+\include{eng/07_Mocking}
+\include{eng/08_UnitTest}
+\include{eng/09_IntegrationTesting}
+\include{eng/10_MetamorphicTesting}
 
 %%
 %\backupbegin

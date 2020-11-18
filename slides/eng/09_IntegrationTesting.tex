@@ -1,0 +1,93 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Integration Testing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Integration test}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Integration testing}
+\framesubtitle{testing in the large}
+\begin{itemize}
+  \item Testing individual modules separately does not guarantee a correct inter-operation of multiple modules.
+  \item Many modules cannot be tested in isolation.
+  \item Additionally: Steps for testing complex systems (modular testing):
+    \begin{itemize}
+      \item Modular tests (a.k.a.\ Unit Tests \&\ Components Tests)\\
+			Testing a component without context.
+      \item Incremental integration test of multiple components in their context.
+      \item System test: Test of the whole system in the application environment (end-to-end).
+    \end{itemize}
+	\item Acceptance tests (a.k.a.\ Funktional tests)\\
+Focus on testing of `cross cutting' functionality.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Integration testing (contd.)}
+\begin{itemize}
+  \item For embedded real time systems, the interoperation of hardware and software needs to be tested.
+	\begin{itemize}
+		\item Digital Twins
+	\end{itemize}
+  \item Incremental testing should be preferred over \glq Big-Bang\grq testing, which directly goes for the full system right after unit testing.
+  \item A clear separation of interface and implementation makes integration testing easy.
+    \begin{itemize}
+      \item Easier swapping of \glq mock-ups\grq\ for \glq real\grq\ modules.\\
+			See, e.g., Mockito \url{https://github.com/mockito/}
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Incremental testing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Incremental testing}
+\begin{center}
+\pgfimage[width=0.8\textwidth]{images/Qualitaetssicherung/abbildungen/Inkrementelles_Testen}\\
+"`Test framework"'
+\end{center}
+ 
+\begin{itemize}
+	\item Incremental tests can be bottom-up, top-down (or even jo-jo), with respect to the hierarchy of composition.
+	\item A hierarchical architecture is very effective for this purpose.
+\end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Incremental testing Strategies}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\framesubtitle{Strategies}
+
+\begin{enumerate}[align=parleft]
+\item [\small top-down:] Highest level module are tested and integrated first. Data flow is also tested early in the process.
+\begin{itemize}
+\item [Pro:] Limits driver
+\item [Con:] Complicate as of stubs, low level units are tested late, no early release of functionality
+\end{itemize}
+\item [\small bottom-up:] Lowest level units are tested and integrated first.
+\begin{itemize}
+\item [Pro:] Minimize need for stubs
+\item [Con:] Complicate as of drivers, high level logic and data flow is tested late, no early release of functionality
+\end{itemize}
+\item [\small Jo-Jo:] Testing along functional data and control flow path
+\begin{itemize}
+\item [] output functions are integrated in top-down
+\item [] input functions are integrated in bottom-up
+\item [Pro:] limited early release of functionality, minimize stubs and drivers
+\end{itemize}
+\end{enumerate}
+\end{frame}

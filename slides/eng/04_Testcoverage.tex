@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Test coverage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}[fragile]
+\frametitle{Risk mitigation}
+\begin{block}{How much testing is enough?}
+\begin{enumerate}[align=parleft]
+\item [\small Exhaustive test:] Test approach in which the test suite comprises all combinations of input values and preconditions.
+\begin{itemize}
+\item \alert{Not feasible} except for trivial cases
+\end{itemize}
+\item [\small Risk mitigation:] Use risks and \alert{priorities to focus} testing efforts.
+\begin{itemize}
+\item Impossible to understand all end user scenarios
+\item Impossible to analyze all implications of code changes
+\item [\small Automation:] Automated testing can have significant coverage
+\end{itemize}
+\end{enumerate}
+\end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Equivalence Class Partitioning}
+\begin{block}{Aim}
+\alert{Divide} input \alert{parameter} and output  ranges into equivalence classes.
+%Divide the definition ranges of input parameters and value ranges of output parameters into equivalence classes from which test cases can be derived.
+\end{block}
+ 
+\vspace{\baselineskip}
+\begin{block}{Assumption}
+When processing a representative from an equivalence class, a program \alert{behaves the same way as with all other values} from this equivalence class.
+\end{block}
+ 
+\vspace{\baselineskip}
+\begin{block}{Representative value for a test case}
+Any representative value from each class.
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Boundary Value Analysis}
+\begin{itemize}
+  \item Test cases that cover the boundary values of equivalence classes or that are in the \alert{immediate vicinity of the boundaries} uncover errors very often.
+  \item \alert{Not any element} from the equivalence class is valid as representative for all boundaries.
+  \item Pick one or more \alert{elements such that every boundary} of the equivalence class is tested.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Equivalence classes with boundary values}
+\begin{center}
+\pgfimage[width=0.95\textwidth]{images/Qualitaetssicherung/abbildungen/AequivalenzklassenMitGrenzwerten}
+\end{center}
+\end{frame}
