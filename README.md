@@ -1,6 +1,6 @@
 # Intro to testing (with Python) 2019
 
-Run it now:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mardatade/Course-Software-Testing/master?urlpath=lab/tree/notebooks/pytest_hello_world.ipynb)
+Run it now:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mardatade/Course-Software-Testing/master?urlpath=lab/tree/notebooks/welcome.ipynb)
 
 ## Scope
 
