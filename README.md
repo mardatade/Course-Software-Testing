@@ -1,5 +1,7 @@
 # Course: Software Testing
 
+[PDF of the slides.](slides/MarDATA.pdf)
+
 Run it now:  [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mardatade/Course-Software-Testing/master?urlpath=lab/tree/notebooks/welcome.ipynb)
 
 ## Scope
